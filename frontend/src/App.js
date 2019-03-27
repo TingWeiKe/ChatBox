@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Linkify from 'react-linkify'
 import { useState, useEffect } from 'react'
+import './styles/main.scss';
 
 export default function App(){
 	const [ result, setResult ] = useState('result')
@@ -33,4 +34,3 @@ export default function App(){
 		</div>
 	)
 }
-
