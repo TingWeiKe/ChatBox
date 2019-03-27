@@ -1,10 +1,11 @@
 .vscode/
 env/
 __pycache__/
-dialogue/thread_embeddings_by_tags/
-dialogue/data/
-
+dialogue/thread_embeddings_by_tags/*
+dialogue/data/*
+!*.gitkeep
 
 dialogue/word_embeddings.tsv
 dialogue/*.pkl
 *.pk.
+.sqlite3

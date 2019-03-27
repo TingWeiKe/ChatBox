@@ -8,32 +8,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .utils import *
 from .dialogue_manager import DialogueManager
+from .main_bot import BotHandler
 # Create your views here.
-
-
-def is_unicode(text):
-    return len(text) == len(text.encode())
-
-
-class BotHandler:
-
-    def __init__(self, dialogue_manager):
-        self.dialogue_manager = dialogue_manager
-        self.answer = ''
-
-    def get_answer(self, question):
-        return self.dialogue_manager.generate_answer(question)
-
-    def get_message(self, text):
-        if is_unicode(text):
-            self.answer = self.get_answer(text)
-        else:
-            self.answer = "Hmm, you are sending some weird characters to me..."
-        return self.answer
 
 
 dialogue_manager = DialogueManager(RESOURCE_PATH)
 bot = BotHandler(dialogue_manager)
+
 
 @api_view(['POST'])
 def DialogueViewSet(request):
