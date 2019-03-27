@@ -1,2 +1,10 @@
 .vscode/
-.env/
+env/
+__pycache__/
+dialogue/thread_embeddings_by_tags/
+dialogue/data/
+
+
+dialogue/word_embeddings.tsv
+dialogue/*.pkl
+*.pk.

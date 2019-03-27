@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from dialogue import views
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register(r'', views.DialogueViewSet,base_name='QQ')
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', views.DialogueViewSet),
 ]
