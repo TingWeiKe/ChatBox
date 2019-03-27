@@ -1,1 +1,18 @@
-@import "theme/_base";
+html {
+	width: 100%;
+	height: 100%;
+	font-size: 100%;
+}
+
+body{
+  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5) !important;
+	background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5) !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.sidelist {
+	background-color: red;
+	h1 {
+		color: red;
+	}
+}

@@ -2,10 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import Linkify from 'react-linkify'
 import { useState, useEffect } from 'react'
-import './styles/main.scss'
-import MessageList from './MessageList'
-
-
+import './styles/main.scss';
+import SideList from './SideList'
 
 export default function App(){
 	const [ result, setResult ] = useState('result')
@@ -27,7 +25,6 @@ export default function App(){
 
 	return (
 		<div className='App'>
-			<MessageList />
 			<input type='text' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<div>
 				<button onClick={() => getSnswer(text)}>Submit</button>
