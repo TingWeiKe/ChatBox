@@ -1,10 +1,8 @@
-
 body {
-  width: 100%;
+	width: 100%;
 	height: 100%;
-  font-size: 100%;
+	font-size: 100%;
 	background-image: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5) !important;
-
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 	padding: 3% 10% !important;
 }
@@ -21,20 +19,75 @@ body {
 	}
 }
 
-.message-contain {
-	height: -webkit-fill-available;
+.message-container {
+	position: relative;
+	height: 90vh;
+
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
-	height: -webkit-fill-available;
+	overflow: hidden;
 }
+
 .message-list {
-	max-height: -webkit-fill-available;
-	overflow-y: scroll;
+	max-height: 88%;
+  overflow-y: scroll;
+  padding: 1.5em 1.5em;
 }
 
 .sidelist {
-	height: -webkit-fill-available;
+	height: 90vh;
+  padding: 1.5em 1.5em;
 	overflow-y: scroll;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
+}
+
+.user-input {
+  cursor: pointer;
+	height: 12%;
+	padding: .75rem 1.25rem;
+	min-height: 50px;
+  background-color: rgba(0, 0, 0, .06);
+ 
+}
+
+.textarea {
+	border: none;
+	color: white !important;
+	border-top-left-radius: 15px !important;
+	border-bottom-left-radius: 15px !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	width: 94%;
+	display: block;
+  height: -webkit-fill-available !important;
+  &:focus{
+    outline: none;
+  }
+}
+
+.submit {
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+  border-left: #1a1a24 1px solid;
+  float: right;
+  position: relative;
+  bottom: 100%;
+  width: 6%;
+	height: -webkit-fill-available !important;
+	border-top-right-radius: 15px !important;
+	border-bottom-right-radius: 15px !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.enterIcon{
+  position: relative;
+  top: 40%;
+  text-align : center;
+margin: auto auto;
+
 }
