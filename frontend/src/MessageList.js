@@ -1,32 +1,22 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 
-export default class MessageList extends Component {
-	render() {
-		return (
-			<div class='message-list'>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-				<h1>MessageList</h1>
-			</div>
-		)
-	}
+import MessageItem from './MessageItem'
+import { ResultManger } from './ResultProvider'
+
+export default function MessageList(){
+	console.log('QQ')
+	return (
+		<ResultManger.Consumer>
+			{(result) => {
+				let y = result[0]
+					? result[0].map((x,index) => {
+							//FIXME:
+							console.log(index)
+							return <MessageItem id={index} data={x} />
+						})
+					: null
+				return <div className='message-list '>{y}</div>
+			}}
+		</ResultManger.Consumer>
+	)
 }

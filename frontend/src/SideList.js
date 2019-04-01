@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SideList(){
 	return (
-		<div class='sidelist'>
+		<div className='sidelist'>
 			<h1>sidebar</h1>
 			<h1>sidebar</h1>
 			<h1>sidebar</h1>

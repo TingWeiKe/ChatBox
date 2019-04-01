@@ -22,72 +22,81 @@ body {
 .message-container {
 	position: relative;
 	height: 90vh;
-
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	overflow: hidden;
 }
 
 .message-list {
-	max-height: 88%;
-  overflow-y: scroll;
-  padding: 1.5em 1.5em;
+	max-height: 84%;
+	overflow-y: scroll;
+	padding: 1.5em 1.5em;
 }
 
 .sidelist {
 	height: 90vh;
-  padding: 1.5em 1.5em;
+	padding: 1.5em 1.5em;
 	overflow-y: scroll;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 }
 
 .user-input {
-  cursor: pointer;
+  width: 100%;
+      position: absolute;
+    top: 87%;
+	cursor: pointer;
 	height: 12%;
 	padding: .75rem 1.25rem;
 	min-height: 50px;
-  background-color: rgba(0, 0, 0, .06);
- 
+	background-color: rgba(0, 0, 0, .06);
 }
 
-.textarea {
+#textarea {
 	border: none;
 	color: white !important;
-	border-top-left-radius: 15px !important;
-	border-bottom-left-radius: 15px !important;
+  border-radius: 10px !important;
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 	padding: .375rem .75rem;
 	font-size: 1rem;
 	line-height: 1.5;
-	width: 94%;
+	width: 92%;
 	display: block;
-  height: -webkit-fill-available !important;
-  &:focus{
-    outline: none;
-  }
+	height: -webkit-fill-available !important;
+	&:focus {
+		outline: none;
+	}
 }
 
 .submit {
-  &:hover{
+  &:hover {
+    transition: 200ms;
     background-color: rgba(0, 0, 0, 0.5) !important;
+
   }
-  border-left: #1a1a24 1px solid;
-  float: right;
-  position: relative;
-  bottom: 100%;
-  width: 6%;
-	height: -webkit-fill-available !important;
-	border-top-right-radius: 15px !important;
-	border-bottom-right-radius: 15px !important;
+  display: block;
+	border-left: #1a1a24 1px solid;
+	float: right;
+	position: absolute;
+  bottom: 15%;
+  left: 92%;
+	width: 6%;
+	height: 70%;
+	border-radius: 10px !important;
+
 	background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-.enterIcon{
-  position: relative;
-  top: 40%;
-  text-align : center;
-margin: auto auto;
-
+.enterIcon {
+	position: relative;
+	top: 40%;
+	text-align: center;
+	margin: auto auto;
 }
+
+#alert{
+  position: fixed;
+  top: 0;
+}
+
