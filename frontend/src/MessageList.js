@@ -12,7 +12,7 @@ export default function MessageList(){
 					? result[0].map((x,index) => {
 							//FIXME:
 							console.log(index)
-							return <MessageItem key={index} data={x} />
+							return <MessageItem id={index} data={x} />
 						})
 					: null
 				return <div className='message-list '>{y}</div>

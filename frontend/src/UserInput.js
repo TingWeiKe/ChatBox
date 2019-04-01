@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import { useState,  useContext } from 'react'
+import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { ResultManger } from './ResultProvider'
@@ -47,7 +47,7 @@ export default function UserInput(){
 	}
 
 	async function updateMessage(text){
-		if (isReturned !== true && text != '') {
+		if (isReturned !== true && text !== '') {
 			setAlert(true)
 			return
 		}

@@ -9,7 +9,6 @@ body {
 @media all and (max-width: 1200px) {
 	body {
 		padding: 3% 0 !important;
-		
 	}
 }
 
@@ -101,30 +100,63 @@ body {
 	z-index: 99;
 }
 
-.message {
-	margin: 25px 0;
+.robot-message {
+	width: 100%;
+	float: left;
+	margin: 8px 0;
 	position: relative;
+	> .msg_icon {
+		position: absolute;
+
+	}
+
+	> .msg_cont {
+		padding: 0 10px;
+		display: inline-block;
+		position: relative;
+		left: 20px;
+		border-radius: 25px;
+		background-color: #82ccdd;
+		padding: 10px;
+		margin: auto 10px;
+	}
+	> .msg_time {
+		max-width: 150px;
+		left: 35px;
+		position: relative;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 10px;
+	}
 }
 
-.msg_icon {
-  position: absolute;
-  top: 5px;
-}
+.user-message{
+	float: right;
+	clear: both;
+	margin: 8px 0;
+	position: relative;
 
-.msg_cont {
-	padding: 0 10px;
-	display: inline-block;
-	position: relative;
-	left: 20px;
-	border-radius: 25px;
-	background-color: #82ccdd;
-	padding: 10px;
-	margin: auto 10px;
-}
-.msg_time {
-	display: inline-block;
-	left: 18px;
-	position: relative;
-	color: rgba(255, 255, 255, 0.5);
-	font-size: 10px;
+	> .msg_icon {
+		// TODO:
+		float: right;
+		position: relative;
+
+	}
+
+	> .msg_cont {
+		display: inline-block;
+		position: relative;
+		border-radius: 25px;
+		background-color: #78E08F;
+		padding: 10px;
+		margin: auto 10px;
+	}
+	> .msg_time {
+		position: relative;
+    right: 49px;
+		float: right;
+		clear: both;
+		max-width: 150px;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 10px;
+	}
 }
