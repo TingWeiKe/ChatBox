@@ -4,19 +4,18 @@ import MessageItem from './MessageItem'
 import { ResultManger } from './ResultProvider'
 
 export default function MessageList(){
-	console.log('QQ')
 	return (
 		<ResultManger.Consumer>
 			{(result) => {
+				console.log(result)
 				let y = result[0]
-					? result[0].map((x,index) => {
-							//FIXME:
-							console.log(index)
+					? result[0].map((x, index) => {
 							return <MessageItem id={index} data={x} />
 						})
 					: null
 				return <div className='message-list '>{y}</div>
-			}}
+      }}
+      {}
 		</ResultManger.Consumer>
 	)
 }
