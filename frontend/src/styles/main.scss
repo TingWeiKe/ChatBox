@@ -8,7 +8,8 @@ body {
 }
 @media all and (max-width: 1200px) {
 	body {
-		padding: 1em !important;
+		padding: 3% 0 !important;
+		
 	}
 }
 
@@ -30,7 +31,7 @@ body {
 .message-list {
 	max-height: 84%;
 	overflow-y: scroll;
-	padding: 1.5em 1.5em;
+	padding: 0.8em 1.5em;
 }
 
 .sidelist {
@@ -42,9 +43,9 @@ body {
 }
 
 .user-input {
-  width: 100%;
-      position: absolute;
-    top: 87%;
+	width: 100%;
+	position: absolute;
+	top: 87%;
 	cursor: pointer;
 	height: 12%;
 	padding: .75rem 1.25rem;
@@ -55,7 +56,7 @@ body {
 #textarea {
 	border: none;
 	color: white !important;
-  border-radius: 10px !important;
+	border-radius: 10px !important;
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 	padding: .375rem .75rem;
@@ -70,17 +71,16 @@ body {
 }
 
 .submit {
-  &:hover {
-    transition: 200ms;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-
-  }
-  display: block;
+	&:hover {
+		transition: 200ms;
+		background-color: rgba(0, 0, 0, 0.5) !important;
+	}
+	display: block;
 	border-left: #1a1a24 1px solid;
 	float: right;
 	position: absolute;
-  bottom: 15%;
-  left: 92%;
+	bottom: 15%;
+	left: 92%;
 	width: 6%;
 	height: 70%;
 	border-radius: 10px !important;
@@ -95,8 +95,36 @@ body {
 	margin: auto auto;
 }
 
-#alert{
-  position: fixed;
-  top: 0;
+#alert {
+	position: fixed;
+	top: 0;
+	z-index: 99;
 }
 
+.message {
+	margin: 25px 0;
+	position: relative;
+}
+
+.msg_icon {
+  position: absolute;
+  top: 5px;
+}
+
+.msg_cont {
+	padding: 0 10px;
+	display: inline-block;
+	position: relative;
+	left: 20px;
+	border-radius: 25px;
+	background-color: #82ccdd;
+	padding: 10px;
+	margin: auto 10px;
+}
+.msg_time {
+	display: inline-block;
+	left: 18px;
+	position: relative;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 10px;
+}
