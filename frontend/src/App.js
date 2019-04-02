@@ -9,12 +9,12 @@ export default function App(){
 	return (
 		<ResultProvider>
 			<div className='App'>
-				<Grid stackable={true}>
+				<Grid >
 					<Grid.Row>
-						<Grid.Column width={5}>
+						<Grid.Column width={5} only='computer'>
 							<SideList />
 						</Grid.Column>
-						<Grid.Column width={11}>
+						<Grid.Column width={16} computer={11}>
 							<Message />
 						</Grid.Column>
 					</Grid.Row>
