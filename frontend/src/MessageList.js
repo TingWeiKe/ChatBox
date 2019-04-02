@@ -1,21 +1,25 @@
 import React, { useContext } from 'react'
-
 import MessageItem from './MessageItem'
-import { ResultManger } from './ResultProvider'
+import { ResultManger, InputManger } from './ResultProvider'
 
 export default function MessageList(){
+	const [ result ] = useContext(ResultManger)
+	const [ input ] = useContext(InputManger)
+
 	return (
-		<ResultManger.Consumer>
-			{(result) => {
-				console.log(result)
-				let y = result[0]
-					? result[0].map((x, index) => {
-							return <MessageItem id={index} data={x} />
-						})
-					: null
-				return <div className='message-list '>{y}</div>
-      }}
-      {}
-		</ResultManger.Consumer>
+		<div id='message-list'>
+		{console.log(result)
+		}
+			{input || result ? (
+				input.map((data, index) => {
+					return (
+						<div key={index}>
+							<MessageItem  type={'user'} data={data.text} time={data.time} />
+							{result[index] !== undefined ? <MessageItem  type={'robt'} data={result[index].result} time={data.time} /> : null}
+						</div>
+					)
+				})
+			) : null}
+		</div>
 	)
 }

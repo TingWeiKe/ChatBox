@@ -4,14 +4,15 @@ import axios from 'axios'
 import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
-import { ResultManger } from './ResultProvider'
+import { ResultManger, InputManger } from './ResultProvider'
 import AlertMessage from './AlertMessage'
 export default function UserInput(){
 	const [ result, setResult ] = useContext(ResultManger)
+	const [ input, setInput ] = useContext(InputManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
 	const [ text, setText ] = useState(null)
-	//FIXME:
+	let m = document.getElementById('message-list')
 
 	axios.interceptors.request.use(
 		(request) => {
@@ -39,7 +40,6 @@ export default function UserInput(){
 	}
 
 	function init(){
-		let m = document.getElementsByClassName('message-list')[0]
 		m.scrollTop = m.scrollHeight
 		setReturn(true)
 		setAlert(false)
@@ -52,11 +52,14 @@ export default function UserInput(){
 			return
 		}
 		if (text) {
+			let x = {'text':text,'time':new Date().toLocaleString()}
+			await setInput([ ...input, x])
 			document.getElementById('textarea').value = ''
+			m.scrollTop = m.scrollHeight
 			let res = await getAnswer(text)
 			if (res.status === 200 && isAlert === false) {
-				result.push(res.data.result)
-				setResult([ ...result ])
+				let y = {result:res.data.result ,'time':new Date().toLocaleString()}
+				await setResult([ ...result, y ])
 				init()
 			}
 		}
