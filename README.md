@@ -1,5 +1,3 @@
-# ChatBox
-
 
 # Installation
 **Backend**
@@ -19,7 +17,7 @@
 * Install all required packages:
 >
     $ pip3 install -r requirements.txt
-* Put folders and files to Chatbox/dialogue/
+* Put folders and files below to Chatbox/dialogue/
 >
         
     dialogue/
