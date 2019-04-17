@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "d074038ad711871a6959",
+    "revision": "0c035d98c098b6cc19c3",
     "url": "/ChatBox/static/css/main.64c9be09.chunk.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/js/2.099795b9.chunk.js"
   },
   {
-    "revision": "cd6c777f1945164224dee082abaea03a",
-    "url": "/ChatBox/static/media/outline-icons.cd6c777f.woff2"
-  },
-  {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/ChatBox/static/media/outline-icons.ef60a4f6.woff"
+  },
+  {
+    "revision": "cd6c777f1945164224dee082abaea03a",
+    "url": "/ChatBox/static/media/outline-icons.cd6c777f.woff2"
   },
   {
     "revision": "9c74e172f87984c48ddf5c8108cabe67",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "d074038ad711871a6959",
-    "url": "/ChatBox/static/js/main.e4acc7a6.chunk.js"
+    "revision": "0c035d98c098b6cc19c3",
+    "url": "/ChatBox/static/js/main.df47e00a.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.8e3c7f55.eot"
   },
   {
-    "revision": "13db00b7a34fee4d819ab7f9838cc428",
-    "url": "/ChatBox/static/media/brand-icons.13db00b7.eot"
-  },
-  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/ChatBox/static/media/icons.b87b9ba5.ttf"
+  },
+  {
+    "revision": "13db00b7a34fee4d819ab7f9838cc428",
+    "url": "/ChatBox/static/media/brand-icons.13db00b7.eot"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/css/2.cf353bb5.chunk.css"
   },
   {
-    "revision": "c90ed77f0fe64a0dfa595eb3a2f62531",
+    "revision": "ee5be23b7dca291a7e550a7888cdc9bb",
     "url": "/ChatBox/index.html"
   }
 ];
