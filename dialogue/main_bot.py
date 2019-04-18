@@ -8,7 +8,7 @@ class BotHandler:
     def __init__(self, dialogue_manager):
         self.dialogue_manager = dialogue_manager
         self.answer = ''
-    def to_traditional_chinese(self,text):
+    def to_simplified_chinese(self,text):
         cc = OpenCC('t2s')
         return cc.convert(text)
 
@@ -16,5 +16,5 @@ class BotHandler:
         return self.dialogue_manager.generate_answer(question, mode)
 
     def get_message(self, text, mode):
-        self.answer = self.get_answer(self.to_traditional_chinese(text), mode)
+        self.answer = self.get_answer(self.to_simplified_chinese(text), mode)
         return self.answer
