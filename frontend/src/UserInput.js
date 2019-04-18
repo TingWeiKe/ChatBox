@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-
 import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { ResultManger, InputManger } from './ResultProvider'
 import AlertMessage from './AlertMessage'
+
 export default function UserInput(){
 	const [ result, setResult ] = useContext(ResultManger)
 	const [ input, setInput ] = useContext(InputManger)
@@ -24,6 +24,17 @@ export default function UserInput(){
 		}
 	)
 
+	axios.interceptors.response.use(
+		(response) => {
+			setReturn(true)
+			return response
+		},
+		(error) => {
+			setReturn(true)
+			return Promise.reject(error)
+		}
+	)
+
 	function handleKeyDown(e){
 		if (e.keyCode === 13) {
 			updateMessage(text)
@@ -32,7 +43,7 @@ export default function UserInput(){
 
 	async function getAnswer(text){
 		if (text) {
-			let m = await axios.post('http://127.0.0.1:8000/api/', { text: text })
+			let m = await axios.post('http://localhost:8000/api/',  { text: text })
 			if (m.status === 200) {
 				return m
 			}
@@ -52,13 +63,13 @@ export default function UserInput(){
 			return
 		}
 		if (text) {
-			let x = {'text':text,'time':new Date().toLocaleString()}
-			await setInput([ ...input, x])
+			let x = { text: text, time: new Date().toLocaleString() }
+			await setInput([ ...input, x ])
 			document.getElementById('textarea').value = ''
 			m.scrollTop = m.scrollHeight
 			let res = await getAnswer(text)
 			if (res.status === 200 && isAlert === false) {
-				let y = {result:res.data.result ,'time':new Date().toLocaleString()}
+				let y = { result: res.data.result, time: new Date().toLocaleString() }
 				await setResult([ ...result, y ])
 				init()
 			}
