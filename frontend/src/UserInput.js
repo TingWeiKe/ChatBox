@@ -43,7 +43,7 @@ export default function UserInput(){
 
 	async function getAnswer(text){
 		if (text) {
-			let m = await axios.post('http://localhost:8000/api/',  { text: text })
+			let m = await axios.post('http://localhost:8000/api/',  { text: text,mode:'cn' })
 			if (m.status === 200) {
 				return m
 			}

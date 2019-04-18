@@ -55,64 +55,81 @@ class DialogueManager(object):
         self.create_chitchat_bot()
 
     def create_chitchat_bot(self):
+        def db_exists(path):
+            return os.path.isfile(path)
         """Initializes self.chitchat_bot with some conversational model."""
 
         # Hint: you might want to create and train chatterbot.ChatBot here.
         # It could be done by creating ChatBot with the *trainer* parameter equals
         # "chatterbot.trainers.ChatterBotCorpusTrainer"
         # and then calling *train* function with "chatterbot.corpus.english" param
+        en_db_exists = db_exists('en_db.sqlite3')
+        cn_db_exists = db_exists('cn_db.sqlite3')
+        print(en_db_exists,cn_db_exists)
         self.cn_chatbot = ChatBot(
             'chinese',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-            database_uri='sqlite:///ch_db.sqlite3',
-            read_only=True
+            database_uri='sqlite:///cn_db.sqlite3',
+            read_only=en_db_exists
         )
-        self.cn_chatbot.train("chatterbot.corpus.chinese")
-        # self.chatbot.train("chatterbot.corpus.english")
 
         self.chatbot = ChatBot(
             'english_bot',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
             database_uri='sqlite:///en_db.sqlite3',
-            read_only=True
+            read_only=cn_db_exists
         )
+        if(cn_db_exists!=True):
+            self.cn_chatbot.train("chatterbot.corpus.chinese")
         
-        # self.chatbot.set_trainer(ListTrainer)
-        # self.chatbot.train([
-        #     "Hey",
-        #     "Hello. How do you do?",
-        # ])
-        # self.chatbot.train([
-        #     "How are you doing?",
-        #     "I am good!",
-        # ])
-        # self.chatbot.train([
-        #     "What's your hobby?",
-        #     "I love soccer.",
-        # ])
-        # self.chatbot.train([
-        #     "What is AI?",
-        #     "Me",
-        # ])
+        if(en_db_exists!=True):
+            self.chatbot.train("chatterbot.corpus.english")
+            self.chatbot.set_trainer(ListTrainer)
+            self.chatbot.train([
+                "Hey",
+                "Hello. How do you do?",
+            ])
+            self.chatbot.train([
+                "How are you doing?",
+                "I am good!",
+            ])
+            self.chatbot.train([
+                "What's your hobby?",
+                "I love soccer.",
+            ])
+            self.chatbot.train([
+                "What is AI?",
+                "Me",
+            ])
 
-    def generate_answer(self, question):
+    def generate_answer(self, question, mode):
         """Combines stackoverflow and chitchat parts using intent recognition."""
+        def is_unicode(text):
+            return len(text) == len(text.encode())
 
+        # Recognize intent of the question using `intent_recognizer`.
+        # Don't forget to prepare question and calculate features for the question.
         prepared_question = text_prepare(question)
-        features = self.tfidf_vectorizer.transform([prepared_question])
-        intent = self.intent_recognizer.predict(features)[0]
-        # Chit-chat part:
-        if intent == 'dialogue':
-            # Pass question to chitchat_bot to generate a response.
-            response = self.cn_chatbot.get_response(prepared_question)
-            return response
+        features = self.tfidf_vectorizer.transform(
+            [prepared_question])
+        intent = self.intent_recognizer.predict(
+            features)[0]
 
-        # Goal-oriented part:
-        else:
-            # Pass features to tag_classifier to get predictions.
-            tag = self.tag_classifier.predict(features)[0]
+        if mode == 'en':
+            if(is_unicode(question)):
+                response = self.chatbot.get_response(question)
+                return response
+            else:
+                response = 'Hmm, you are sending some weird characters to me...'
+                return response
 
+        elif mode == 'stof':
+            tag = self.tag_classifier.predict(
+                features)[0]
             thread_id = self.thread_ranker.get_best_thread(
                 prepared_question, tag)
 
             return self.ANSWER_TEMPLATE % (tag, thread_id)
+        elif mode == "cn":
+            response = self.cn_chatbot.get_response(question)
+            return response

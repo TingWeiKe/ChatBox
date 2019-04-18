@@ -20,7 +20,7 @@ bot = BotHandler(dialogue_manager)
 def DialogueViewSet(request):
     serializer = DialogueSerializer(data=request.data)
     if serializer.is_valid():
-        result = bot.get_message(request.data["text"])
+        result = bot.get_message(request.data["text"], request.data["mode"])
         serializer.save(result=result)
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

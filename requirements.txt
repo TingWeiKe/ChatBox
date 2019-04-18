@@ -12,6 +12,7 @@ mathparse==0.1.2
 nltk==3.4
 numpy==1.16.2
 oauthlib==3.0.1
+opencc-python-reimplemented==0.1.4
 post==2019.3.22
 public==2019.3.22
 pycodestyle==2.5.0
