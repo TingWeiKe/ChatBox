@@ -3,6 +3,7 @@ from sklearn.metrics.pairwise import pairwise_distances_argmin
 
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from opencc import OpenCC
 from .utils import *
 
 
@@ -65,7 +66,7 @@ class DialogueManager(object):
         # and then calling *train* function with "chatterbot.corpus.english" param
         en_db_exists = db_exists('en_db.sqlite3')
         cn_db_exists = db_exists('cn_db.sqlite3')
-        print(en_db_exists,cn_db_exists)
+        print(en_db_exists, cn_db_exists)
         self.cn_chatbot = ChatBot(
             'chinese',
             trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
@@ -79,10 +80,10 @@ class DialogueManager(object):
             database_uri='sqlite:///en_db.sqlite3',
             read_only=cn_db_exists
         )
-        if(cn_db_exists!=True):
+        if(cn_db_exists != True):
             self.cn_chatbot.train("chatterbot.corpus.chinese")
-        
-        if(en_db_exists!=True):
+
+        if(en_db_exists != True):
             self.chatbot.train("chatterbot.corpus.english")
             self.chatbot.set_trainer(ListTrainer)
             self.chatbot.train([
@@ -106,6 +107,10 @@ class DialogueManager(object):
         """Combines stackoverflow and chitchat parts using intent recognition."""
         def is_unicode(text):
             return len(text) == len(text.encode())
+
+        def to_traditional_chinese(text):
+            cc = OpenCC('s2t')
+            return cc.convert(text)
 
         # Recognize intent of the question using `intent_recognizer`.
         # Don't forget to prepare question and calculate features for the question.
@@ -132,4 +137,4 @@ class DialogueManager(object):
             return self.ANSWER_TEMPLATE % (tag, thread_id)
         elif mode == "cn":
             response = self.cn_chatbot.get_response(question)
-            return response
+            return to_traditional_chinese(str(response))
