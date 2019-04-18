@@ -189,3 +189,31 @@ body {
 	}
 }
 
+
+.msg_head{
+	display: flex !important;
+	height: 80px;
+	padding: .75rem 1.25rem;
+	margin-bottom: 0;
+	background-color: rgba(0,0,0,.1);
+	>img{
+		border: 1.5px solid #f5f6fa;
+		border-radius: 50%!important;
+		float: left;
+		width: 60px;
+		margin: auto 0;
+	}
+	.robot_info{
+		margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+		font-size: 20px;
+		color: white;
+		>div{
+			margin-top: 5px;
+			font-size: 10px;
+			color: rgba(255,255,255,0.6);
+		}
+	}
+	
+}
