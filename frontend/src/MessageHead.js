@@ -6,8 +6,8 @@ export default function MessageHead() {
     <div className='msg_head'>
     <Image src={headRobotIcon} />
       <div className='robot_info'>
-        <span>中文聊天機器人 Chinese Chatbot</span>
-        <div>(繁體中文)</div>
+        <span>繁體中文聊天機器人</span>
+        <div>( Traditional Chinese Chatbot )</div>
       </div>
     </div>
   )

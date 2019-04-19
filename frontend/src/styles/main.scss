@@ -47,27 +47,66 @@ body {
 }
 
 #message-list {
-	max-height: 84%;
+	height: calc( 100% - 130px );
 	overflow-y: scroll;
 	padding: 0.8em 1.5em;
 }
 
+.side_box:active {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.side_box:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
 .sidelist {
+	flex: 1 1 auto;
 	height: 90vh;
-	padding: 1.5em 1.5em;
+	padding: 1.5em 0;
 	overflow-y: scroll;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
+	.side_header{
+		height: 40px;
+	}
+	.side_box {
+		cursor: pointer;
+		height: 70px;
+		list-style-type: none;
+		width: 100% !important;
+		height: 70px;
+		padding: 5px 10px;
+		margin-bottom: 15px !important;
+		> img {
+			float: left;
+			border: 1.5px solid #f5f6fa;
+			background-color: rgba(0, 0, 0, 0.4) !important;
+			border-radius: 50% !important;
+			width: 60px;
+			margin: auto;
+		}
+		> .robot_box {
+			display: block;
+			float: left;
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-left: 15px;
+			> div {
+				font-size: 20px;
+				color: white;
+				margin-top: 10px;
+			}
+			> p {
+				margin-top: 5px;
+				font-size: 10px;
+				color: rgba(255, 255, 255, 0.4);
+			}
+		}
+	}
 }
 
 .user-input {
-	width: 100%;
-	position: absolute;
-	top: 87%;
-	cursor: pointer;
-	height: 12%;
-	padding: .75rem 1.25rem;
-	min-height: 50px;
+	padding: .55rem 1.25rem;
 	background-color: rgba(0, 0, 0, .06);
 }
 
@@ -78,11 +117,11 @@ body {
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 	padding: .375rem .75rem;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	line-height: 1.5;
 	width: 92%;
 	display: block;
-	height: -webkit-fill-available !important;
+	display: inline-block;
 	&:focus {
 		outline: none;
 	}
@@ -97,18 +136,17 @@ body {
 	border-left: #1a1a24 1px solid;
 	float: right;
 	position: absolute;
-	bottom: 15%;
-	left: 92%;
-	width: 6%;
-	height: 70%;
+	bottom: 1%;
+	left: 91%;
+	width: 7%;
+	height: 37px;
 	border-radius: 10px !important;
-
 	background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 .enterIcon {
 	position: relative;
-	top: 40%;
+	top: 32%;
 	text-align: center;
 	margin: auto auto;
 }
@@ -132,7 +170,7 @@ body {
 		padding: 0 10px;
 		display: inline-block;
 		position: relative;
-		left: 20px;
+		left: 23px;
 		border-radius: 25px;
 		background-color: #82ccdd;
 		padding: 10px;
@@ -148,72 +186,94 @@ body {
 }
 
 .user-message {
+	width: 100%;
 	float: right;
 	clear: both;
 	margin: 3px 0;
 	position: relative;
-
 	> .msg_icon {
 		float: right;
-		position: relative;
-		top: 3px;
 	}
 
 	> .msg_cont {
+		padding: 0 10px;
 		float: right;
-		display: inline-block;
-		position: relative;
 		border-radius: 25px;
 		background-color: #78e08f;
 		padding: 10px;
-		margin: auto 15px;
+		margin: auto 10px auto 20px;
 	}
 	> .msg_time {
-		position: relative;
-		right: 49px;
-		float: right;
 		clear: both;
+		float: right;
 		max-width: 150px;
+		right: 45px;
+		position: relative;
 		color: rgba(255, 255, 255, 0.5);
 		font-size: 10px;
 	}
-}
-.sidelist{
-	text-align: center;
-	.footer {
-		position: absolute;
-		bottom: 0px;
-		right: 0px;
-		vertical-align: bottom;
-		width: 100%;
-	}
+	// float: right;
+	// clear: both;
+	// margin: 3px 0;
+	// position: relative;
+
+	// > .msg_icon {
+	// 	float: right;
+	// 	position: relative;
+	// 	top: 3px;
+	// }
+
+	// > .msg_cont {
+	// 	float: right;
+	// 	display: inline-block;
+	// 	position: relative;
+	// 	border-radius: 25px;
+	// 	background-color: #78e08f;
+	// 	padding: 10px;
+	// 	margin: auto 15px;
+	// }
+	// > .msg_time {
+	// 	position: relative;
+	// 	right: 49px;
+	// 	float: right;
+	// 	clear: both;
+	// 	max-width: 150px;
+	// 	color: rgba(255, 255, 255, 0.5);
+	// 	font-size: 10px;
+	// }
 }
 
-
-.msg_head{
+.msg_head {
 	display: flex !important;
 	height: 80px;
 	padding: .75rem 1.25rem;
 	margin-bottom: 0;
-	background-color: rgba(0,0,0,.1);
-	>img{
+	background-color: rgba(0, 0, 0, .1);
+	> img {
 		border: 1.5px solid #f5f6fa;
-		border-radius: 50%!important;
+		border-radius: 50% !important;
+		background-color: rgba(0, 0, 0, 0.4) !important;
 		float: left;
 		width: 60px;
 		margin: auto 0;
 	}
-	.robot_info{
+	.robot_info {
 		margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 15px;
+		margin-bottom: auto;
+		margin-left: 15px;
 		font-size: 20px;
 		color: white;
-		>div{
+
+		> div {
 			margin-top: 5px;
 			font-size: 10px;
-			color: rgba(255,255,255,0.6);
+			color: rgba(255, 255, 255, 0.6);
 		}
 	}
-	
+}
+
+.circle{
+	border: 1.5px solid #f5f6fa;
+	border-radius: 50% !important;
+	background-color: rgba(0, 0, 0, 0.4) !important;
 }

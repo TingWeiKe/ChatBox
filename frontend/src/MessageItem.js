@@ -9,7 +9,7 @@ function MessageRobotItem(props){
 		<Transition transitionOnMount={true} animation='scale' duration={300}>
 			<div className='robot-message'>
 				<div className='msg_icon'>
-					<Image src={robotIcon} />
+					<Image className='circle' src={robotIcon} />
 				</div>
 				<div className='msg_cont'>
 					<Linkify>{props.props.data}</Linkify>
@@ -25,7 +25,7 @@ function MessageUserItem(props){
 		<Transition transitionOnMount={true} animation='scale' duration={300}>
 			<div className='user-message'>
 				<div className='msg_icon'>
-					<Image src={useIcon} />
+					<Image className='circle' src={useIcon} />
 				</div>
 				<div className='msg_cont'>
 					<Linkify>{props.props.data}</Linkify>

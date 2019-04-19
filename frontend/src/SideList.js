@@ -1,10 +1,32 @@
 import React from 'react'
+import { Image } from 'semantic-ui-react'
+import { robotIcon, headRobotIcon } from './styles/icons'
 
 export default function SideList(){
 	return (
 		<div className='sidelist'>
-			<h1>Header</h1>
-			<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div className='side_header'>Header</div>
+			<div onMouseDown={console.log('QQ')} className='side_box'>
+				<Image src={headRobotIcon} />
+				<div className='robot_box'>
+					<div>English Chatbot</div>
+					<p>d</p>
+				</div>
+			</div>
+			<div className='side_box'>
+				<Image src={headRobotIcon} />
+				<div className='robot_box'>
+					<div>繁體中文聊天機器人</div>
+					<p>( Traditional Chinese Chatbot )</p>
+				</div>
+			</div>
+			<div className='side_box'>
+				<Image src={headRobotIcon} />
+				<div className='robot_box'>
+					<div>StackOverFlow Chatbot</div>
+					<p>d</p>
+				</div>
+			</div>
 			<div className='footer'>Footer</div>
 		</div>
 	)
