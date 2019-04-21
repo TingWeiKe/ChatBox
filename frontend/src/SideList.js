@@ -1,33 +1,46 @@
-import React from 'react'
-import { Image } from 'semantic-ui-react'
-import { robotIcon, headRobotIcon } from './styles/icons'
+import React, { useState } from 'react'
+import { headRobotIcon, chineseIcon, stIcon } from './styles/icons'
+import RobotItem from './RobotItem'
 
 export default function SideList(){
+	const initialState = [
+		{
+			title: 'English Chatbot',
+			info: 'English Chatbot',
+			action: 'TO_EN',
+			mode: 'en',
+			icon: headRobotIcon,
+		},
+		{
+			title: '中文聊天機器人',
+			info: '( Chinese Chatbot )',
+			action: 'TO_CN',
+			mode: 'en',
+			icon: chineseIcon,
+		},
+		{
+			title: 'StackOverFlowBot',
+			info: '( StackOverFlow Chatbot )',
+			action: 'TO_STOF',
+			mode: 'stof',
+			icon: stIcon,
+		},
+	]
+	const [ robots ] = useState(initialState)
+
 	return (
 		<div className='sidelist'>
-			<div className='side_header'>Header</div>
-			<div onMouseDown={console.log('QQ')} className='side_box'>
-				<Image src={headRobotIcon} />
-				<div className='robot_box'>
-					<div>English Chatbot</div>
-					<p>d</p>
-				</div>
+			<div className='side_header'>
+			<div>ChatBox 🤖</div>
+			<div>Chatting with a Deep learning brain</div>
+			
 			</div>
-			<div className='side_box'>
-				<Image src={headRobotIcon} />
-				<div className='robot_box'>
-					<div>繁體中文聊天機器人</div>
-					<p>( Traditional Chinese Chatbot )</p>
-				</div>
-			</div>
-			<div className='side_box'>
-				<Image src={headRobotIcon} />
-				<div className='robot_box'>
-					<div>StackOverFlow Chatbot</div>
-					<p>d</p>
-				</div>
-			</div>
-			<div className='footer'>Footer</div>
+			{robots ? (
+				robots.map((data) => {
+					return <RobotItem data={data} />
+				})
+			) : null}
+
 		</div>
 	)
 }

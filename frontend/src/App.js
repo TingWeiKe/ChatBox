@@ -3,23 +3,23 @@ import { Grid } from 'semantic-ui-react'
 import './styles/main.scss'
 import SideList from './SideList'
 import Message from './Message'
-import ResultProvider from './ResultProvider'
+import MessageProvider from './MessageProvider'
 
 export default function App(){
 	return (
-		<ResultProvider>
+		<MessageProvider>
 			<div className='App'>
-				<Grid >
+				<Grid stretched={true} stackable={true}>
 					<Grid.Row>
-						<Grid.Column width={5} only='computer'>
+						<Grid.Column width={6} >
 							<SideList />
 						</Grid.Column>
-						<Grid.Column width={16} computer={11}>
+						<Grid.Column width={10}>
 							<Message />
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
 			</div>
-		</ResultProvider>
+		</MessageProvider>
 	)
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import Linkify from 'react-linkify'
-import { robotIcon, useIcon } from './styles/icons'
+import { userIcon } from './styles/icons'
 import { Image } from 'semantic-ui-react'
 import { Transition } from 'semantic-ui-react'
 
 function MessageRobotItem(props){
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={300}>
+		<Transition transitionOnMount={true} animation='scale' duration={200}>
 			<div className='robot-message'>
 				<div className='msg_icon'>
-					<Image className='circle' src={robotIcon} />
+					<Image className='circle' src={props.icon} />
 				</div>
 				<div className='msg_cont'>
 					<Linkify>{props.props.data}</Linkify>
@@ -22,10 +22,10 @@ function MessageRobotItem(props){
 
 function MessageUserItem(props){
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={300}>
+		<Transition transitionOnMount={true} animation='scale' duration={200}>
 			<div className='user-message'>
 				<div className='msg_icon'>
-					<Image className='circle' src={useIcon} />
+					<Image className='circle' src={userIcon} />
 				</div>
 				<div className='msg_cont'>
 					<Linkify>{props.props.data}</Linkify>
@@ -37,5 +37,6 @@ function MessageUserItem(props){
 }
 
 export default function MessageItem(props){
-	return props.type === 'user' ? <MessageUserItem props={props} /> : <MessageRobotItem props={props} />
+	let icon = props.icon
+	return props.type === 'user' ? <MessageUserItem props={props} /> : <MessageRobotItem props={props} icon={icon} />
 }

@@ -3,37 +3,20 @@ import axios from 'axios'
 import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
-import { ResultManger, InputManger } from './ResultProvider'
+import { MessageManger } from './MessageProvider'
 import AlertMessage from './AlertMessage'
 
-export default function UserInput(){
-	const [ result, setResult ] = useContext(ResultManger)
-	const [ input, setInput ] = useContext(InputManger)
+export default function UserInput(props){
+	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
 	const [ text, setText ] = useState(null)
-	let m = document.getElementById('message-list')
+	const dispatch = useContext(MessageManger)[3][1]
+	const messageList = document.getElementById('message-list')
 
-	axios.interceptors.request.use(
-		(request) => {
-			setReturn(false)
-			return request
-		},
-		(error) => {
-			return Promise.reject(error)
-		}
-	)
-
-	axios.interceptors.response.use(
-		(response) => {
-			setReturn(true)
-			return response
-		},
-		(error) => {
-			setReturn(true)
-			return Promise.reject(error)
-		}
-	)
+	function generateRandId(){
+		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
+	}
 
 	function handleKeyDown(e){
 		if (e.keyCode === 13) {
@@ -43,15 +26,18 @@ export default function UserInput(){
 
 	async function getAnswer(text){
 		if (text) {
-			let m = await axios.post('http://localhost:8000/api/',  { text: text,mode:'cn' })
-			if (m.status === 200) {
-				return m
+			let res = await axios.post('http://localhost:8000/api/', {
+				text: text,
+				mode: props.mode,
+			})
+			if (res.status === 200) {
+				return res
 			}
 		}
 	}
 
 	function init(){
-		m.scrollTop = m.scrollHeight
+		messageList.scrollTop = messageList.scrollHeight
 		setReturn(true)
 		setAlert(false)
 		setText('')
@@ -63,14 +49,28 @@ export default function UserInput(){
 			return
 		}
 		if (text) {
-			let x = { text: text, time: new Date().toLocaleString() }
+			let x = {
+				text: text,
+				type: 'user',
+				time: new Date().toLocaleString(),
+				id: generateRandId(),
+			}
 			await setInput([ ...input, x ])
+			await dispatch({
+				type: props.mode,
+				message: x,
+			})
 			document.getElementById('textarea').value = ''
-			m.scrollTop = m.scrollHeight
+			messageList.scrollTop = messageList.scrollHeight
 			let res = await getAnswer(text)
 			if (res.status === 200 && isAlert === false) {
-				let y = { result: res.data.result, time: new Date().toLocaleString() }
-				await setResult([ ...result, y ])
+				let y = {
+					text: res.data.result,
+					type: 'robot',
+					time: new Date().toLocaleString(),
+					id: res.data.id,
+				}
+				await dispatch({ type: props.mode, message: y })
 				init()
 			}
 		}
@@ -78,11 +78,11 @@ export default function UserInput(){
 
 	return (
 		<div className='user-input'>
-			<input id='textarea' type='text' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
+			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />
 			</i>
-			<AlertMessage isAlert={isAlert} />
+			<AlertMessage setReturn={setReturn} isAlert={isAlert} />
 		</div>
 	)
 }

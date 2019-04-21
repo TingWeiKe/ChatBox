@@ -1,21 +1,21 @@
 import React, { useContext } from 'react'
 import MessageItem from './MessageItem'
-import { ResultManger, InputManger } from './ResultProvider'
+import { MessageManger } from './MessageProvider'
 
-export default function MessageList(){
-	const [ result ] = useContext(ResultManger)
-	const [ input ] = useContext(InputManger)
-
+export default function MessageList(props){
+	const [ robotState ] = useContext(MessageManger)[2]
+	const [ state ] = useContext(MessageManger)[3]
+	let message = []
+	let x = [ state.enMessage, state.cnMessage, state.stMessage ]
+	message = x[robotState.index]
+	
 	return (
 		<div id='message-list'>
-		{console.log(result)
-		}
-			{input || result ? (
-				input.map((data, index) => {
+			{message ? (
+				message.map((data) => {
 					return (
-						<div key={index}>
-							<MessageItem  type={'user'} data={data.text} time={data.time} />
-							{result[index] !== undefined ? <MessageItem  type={'robt'} data={result[index].result} time={data.time} /> : null}
+						<div key={data.id}>
+							<MessageItem type={data.type} data={data.text} time={data.time} icon={robotState.icon} />
 						</div>
 					)
 				})

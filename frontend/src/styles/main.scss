@@ -7,10 +7,20 @@ body {
 }
 @media all and (max-width: 992px) {
 	body {
-		padding: 3% !important;
+		padding: 3% 3% !important;
 	}
 	.message-container {
-		height: 94vh !important;
+		height: 97vh !important;
+	}
+}
+@media all and (max-width: 767px) {
+	body {
+		margin-top: 1rem !important;
+		padding: 0% !important;
+	}
+
+	.sidelist {
+		height: unset !important;
 	}
 }
 
@@ -47,7 +57,7 @@ body {
 }
 
 #message-list {
-	height: calc( 100% - 130px );
+	height: calc(100% - 140px);
 	overflow-y: scroll;
 	padding: 0.8em 1.5em;
 }
@@ -62,28 +72,43 @@ body {
 .sidelist {
 	flex: 1 1 auto;
 	height: 90vh;
-	padding: 1.5em 0;
 	overflow-y: scroll;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
-	.side_header{
-		height: 40px;
+	.side_header {
+		color: white;
+		font-size: 24px;
+		text-align: center;
+		height: 80px;
+		padding: .75rem 1.25rem;
+		margin-bottom: 0;
+		background-color: rgba(0, 0, 0, 0.1);
+		>div{
+			margin-bottom: 10px;
+			margin-top: 4px;
+		}
 	}
 	.side_box {
 		cursor: pointer;
 		height: 70px;
 		list-style-type: none;
 		width: 100% !important;
-		height: 70px;
 		padding: 5px 10px;
 		margin-bottom: 15px !important;
-		> img {
+		> div {
+			position: relative;
+		}
+		> div > img {
 			float: left;
 			border: 1.5px solid #f5f6fa;
 			background-color: rgba(0, 0, 0, 0.4) !important;
 			border-radius: 50% !important;
 			width: 60px;
 			margin: auto;
+		}
+		.online_icon {
+			top: 45px;
+			left: 45px;
 		}
 		> .robot_box {
 			display: block;
@@ -92,7 +117,7 @@ body {
 			margin-bottom: auto;
 			margin-left: 15px;
 			> div {
-				font-size: 20px;
+				font-size: 18px;
 				color: white;
 				margin-top: 10px;
 			}
@@ -112,6 +137,7 @@ body {
 
 #textarea {
 	border: none;
+	height: 43px;
 	color: white !important;
 	border-radius: 10px !important;
 	background-color: rgba(0, 0, 0, 0.3) !important;
@@ -119,7 +145,7 @@ body {
 	padding: .375rem .75rem;
 	font-size: 1.2rem;
 	line-height: 1.5;
-	width: 92%;
+	width: calc(100% - 70px);
 	display: block;
 	display: inline-block;
 	&:focus {
@@ -132,14 +158,14 @@ body {
 		transition: 200ms;
 		background-color: rgba(0, 0, 0, 0.5) !important;
 	}
+	right: 10px;
 	display: block;
 	border-left: #1a1a24 1px solid;
 	float: right;
 	position: absolute;
-	bottom: 1%;
-	left: 91%;
-	width: 7%;
-	height: 37px;
+	bottom: 9px;
+	width: 70px;
+	height: 44px;
 	border-radius: 10px !important;
 	background-color: rgba(0, 0, 0, 0.3) !important;
 }
@@ -164,6 +190,7 @@ body {
 	position: relative;
 	> .msg_icon {
 		position: absolute;
+		width: 35px;
 	}
 
 	> .msg_cont {
@@ -212,35 +239,6 @@ body {
 		color: rgba(255, 255, 255, 0.5);
 		font-size: 10px;
 	}
-	// float: right;
-	// clear: both;
-	// margin: 3px 0;
-	// position: relative;
-
-	// > .msg_icon {
-	// 	float: right;
-	// 	position: relative;
-	// 	top: 3px;
-	// }
-
-	// > .msg_cont {
-	// 	float: right;
-	// 	display: inline-block;
-	// 	position: relative;
-	// 	border-radius: 25px;
-	// 	background-color: #78e08f;
-	// 	padding: 10px;
-	// 	margin: auto 15px;
-	// }
-	// > .msg_time {
-	// 	position: relative;
-	// 	right: 49px;
-	// 	float: right;
-	// 	clear: both;
-	// 	max-width: 150px;
-	// 	color: rgba(255, 255, 255, 0.5);
-	// 	font-size: 10px;
-	// }
 }
 
 .msg_head {
@@ -249,13 +247,20 @@ body {
 	padding: .75rem 1.25rem;
 	margin-bottom: 0;
 	background-color: rgba(0, 0, 0, .1);
-	> img {
+	> div {
+		position: relative;
+	}
+	> div > img {
 		border: 1.5px solid #f5f6fa;
 		border-radius: 50% !important;
 		background-color: rgba(0, 0, 0, 0.4) !important;
 		float: left;
 		width: 60px;
 		margin: auto 0;
+	}
+	.online_icon {
+		top: 45px;
+		left: 45px;
 	}
 	.robot_info {
 		margin-top: auto;
@@ -272,8 +277,16 @@ body {
 	}
 }
 
-.circle{
+.circle {
 	border: 1.5px solid #f5f6fa;
 	border-radius: 50% !important;
 	background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.online_icon {
+	position: absolute;
+	height: 15px;
+	width: 15px;
+	background-color: #4cd137;
+	border-radius: 50%;
+	border: 1.5px solid white;
 }

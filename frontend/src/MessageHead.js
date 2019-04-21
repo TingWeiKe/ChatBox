@@ -1,14 +1,18 @@
 import React from 'react'
 import { Image } from 'semantic-ui-react'
-import { robotIcon, headRobotIcon } from './styles/icons'
-export default function MessageHead() {
-  return (
-    <div className='msg_head'>
-    <Image src={headRobotIcon} />
-      <div className='robot_info'>
-        <span>繁體中文聊天機器人</span>
-        <div>( Traditional Chinese Chatbot )</div>
-      </div>
-    </div>
-  )
+
+export default function MessageHead(props){
+	return (
+		<div className='msg_head'>
+			<div>
+				<Image src={props.state.icon} />
+				<span className='online_icon' />
+			</div>
+
+			<div className='robot_info'>
+				<span>{props.state.title}</span>
+				<div>{props.state.info}</div>
+			</div>
+		</div>
+	)
 }
