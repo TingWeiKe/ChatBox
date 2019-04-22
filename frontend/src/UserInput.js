@@ -10,7 +10,9 @@ export default function UserInput(props){
 	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
-	const [ text, setText ] = useState(null)
+	const [ text, setText ] = useState('')
+	// const [ counter, setcounter ] = useState(1)
+	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
 	const messageList = document.getElementById('message-list')
 
@@ -18,9 +20,37 @@ export default function UserInput(props){
 		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
 	}
 
-	function handleKeyDown(e){
+	async function handleKeyDown(e){
+		function isIputExist(){
+			return input.length - counter.current > 0
+		}
+
+		function handlePreviosInput(index){
+			console.log(index)
+			if (index >= 0 && input.length - index > 0) {
+				let targetDom = document.getElementById('textarea')
+				document.getElementById('textarea').value = input[index].text
+			}
+		}
+
+		//Enter  Button
 		if (e.keyCode === 13) {
-			updateMessage(text)
+			updateMessage(e.target.value)
+		}
+		//Up Button
+		if (e.keyCode === 38 && isIputExist()) {
+			e.preventDefault()
+			counter.current += 1
+			let index = input.length - counter.current
+			handlePreviosInput(index)
+			//Down Button
+		} else if (e.keyCode === 40 && counter.current > 1) {
+			counter.current -= 1
+			let index = input.length - counter.current
+			handlePreviosInput(index)
+			//if statement prevent previous loop
+		} else if (e.keyCode !== 38 && e.keyCode !== 40) {
+			counter.current = 0
 		}
 	}
 
@@ -40,7 +70,6 @@ export default function UserInput(props){
 		messageList.scrollTop = messageList.scrollHeight
 		setReturn(true)
 		setAlert(false)
-		setText('')
 	}
 
 	async function updateMessage(text){
@@ -70,6 +99,7 @@ export default function UserInput(props){
 					time: new Date().toLocaleString(),
 					id: res.data.id,
 				}
+				setText('')
 				await dispatch({ type: props.mode, message: y })
 				init()
 			}
