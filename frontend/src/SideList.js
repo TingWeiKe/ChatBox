@@ -31,7 +31,7 @@ export default function SideList(){
 	return (
 		<div className='sidelist'>
 			<div className='side_header'>
-			<div>ChatBox 🤖</div>
+			<div>ChatBox <span role="img" aria-label="Robot">🤖🤖</span> </div>
 			<div>Chatting with a Deep learning brain</div>
 			
 			</div>

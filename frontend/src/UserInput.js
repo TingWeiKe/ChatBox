@@ -26,9 +26,7 @@ export default function UserInput(props){
 		}
 
 		function handlePreviosInput(index){
-			console.log(index)
 			if (index >= 0 && input.length - index > 0) {
-				let targetDom = document.getElementById('textarea')
 				document.getElementById('textarea').value = input[index].text
 			}
 		}
