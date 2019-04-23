@@ -1,16 +1,18 @@
 {
-  "main.css": "/ChatBox/static/css/main.64c9be09.chunk.css",
-  "main.js": "/ChatBox/static/js/main.068dc84e.chunk.js",
-  "main.js.map": "/ChatBox/static/js/main.068dc84e.chunk.js.map",
+  "main.css": "/ChatBox/static/css/main.ec9be479.chunk.css",
+  "main.js": "/ChatBox/static/js/main.e0893692.chunk.js",
+  "main.js.map": "/ChatBox/static/js/main.e0893692.chunk.js.map",
   "runtime~main.js": "/ChatBox/static/js/runtime~main.8340e97b.js",
   "runtime~main.js.map": "/ChatBox/static/js/runtime~main.8340e97b.js.map",
   "static/css/2.cf353bb5.chunk.css": "/ChatBox/static/css/2.cf353bb5.chunk.css",
-  "static/js/2.099795b9.chunk.js": "/ChatBox/static/js/2.099795b9.chunk.js",
-  "static/js/2.099795b9.chunk.js.map": "/ChatBox/static/js/2.099795b9.chunk.js.map",
+  "static/js/2.7957a15d.chunk.js": "/ChatBox/static/js/2.7957a15d.chunk.js",
+  "static/js/2.7957a15d.chunk.js.map": "/ChatBox/static/js/2.7957a15d.chunk.js.map",
   "index.html": "/ChatBox/index.html",
-  "precache-manifest.1053850cdda4fecf8452bdcffcd5ff8d.js": "/ChatBox/precache-manifest.1053850cdda4fecf8452bdcffcd5ff8d.js",
+  "precache-manifest.8b61507f0036409bff53e6382762d60a.js": "/ChatBox/precache-manifest.8b61507f0036409bff53e6382762d60a.js",
   "service-worker.js": "/ChatBox/service-worker.js",
   "static/css/2.cf353bb5.chunk.css.map": "/ChatBox/static/css/2.cf353bb5.chunk.css.map",
-  "static/css/main.64c9be09.chunk.css.map": "/ChatBox/static/css/main.64c9be09.chunk.css.map",
-  "static/media/semantic.min.css": "/ChatBox/static/media/outline-icons.ef60a4f6.woff"
+  "static/css/main.ec9be479.chunk.css.map": "/ChatBox/static/css/main.ec9be479.chunk.css.map",
+  "static/media/semantic.min.css": "/ChatBox/static/media/outline-icons.ef60a4f6.woff",
+  "static/media/receive.mp3": "/ChatBox/static/media/receive.ed9d24b5.mp3",
+  "static/media/send.mp3": "/ChatBox/static/media/send.51ae1d7e.mp3"
 }
