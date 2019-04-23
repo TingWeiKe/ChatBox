@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "d2d0afc0107a78b46d5e",
+    "revision": "80ec606ceeedb3c92565",
     "url": "/ChatBox/static/css/main.ec9be479.chunk.css"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "d2d0afc0107a78b46d5e",
-    "url": "/ChatBox/static/js/main.92b7276d.chunk.js"
+    "revision": "80ec606ceeedb3c92565",
+    "url": "/ChatBox/static/js/main.0def1a6f.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -64,12 +64,12 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/flags.9c74e172.png"
   },
   {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/ChatBox/static/media/icons.8e3c7f55.eot"
-  },
-  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/ChatBox/static/media/icons.b87b9ba5.ttf"
+  },
+  {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/ChatBox/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/css/2.cf353bb5.chunk.css"
   },
   {
-    "revision": "68dd6b2092b991166b45899bb0081a78",
+    "revision": "fef53b38eae54535c7e246559529e092",
     "url": "/ChatBox/index.html"
   }
 ];
