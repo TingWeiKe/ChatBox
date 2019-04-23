@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "6e78e817837a3304d6a4",
+    "revision": "d2d0afc0107a78b46d5e",
     "url": "/ChatBox/static/css/main.ec9be479.chunk.css"
   },
   {
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/receive.ed9d24b5.mp3"
   },
   {
-    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
-    "url": "/ChatBox/static/media/outline-icons.ef60a4f6.woff"
-  },
-  {
     "revision": "cd6c777f1945164224dee082abaea03a",
     "url": "/ChatBox/static/media/outline-icons.cd6c777f.woff2"
+  },
+  {
+    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
+    "url": "/ChatBox/static/media/outline-icons.ef60a4f6.woff"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "6e78e817837a3304d6a4",
-    "url": "/ChatBox/static/js/main.e0893692.chunk.js"
+    "revision": "d2d0afc0107a78b46d5e",
+    "url": "/ChatBox/static/js/main.92b7276d.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -64,16 +64,16 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/media/flags.9c74e172.png"
   },
   {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/ChatBox/static/media/icons.8e3c7f55.eot"
+  },
+  {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/ChatBox/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/ChatBox/static/media/brand-icons.13db00b7.eot"
-  },
-  {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/ChatBox/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/ChatBox/static/css/2.cf353bb5.chunk.css"
   },
   {
-    "revision": "ce42a84848ab775bece201bfec10474d",
+    "revision": "68dd6b2092b991166b45899bb0081a78",
     "url": "/ChatBox/index.html"
   }
 ];
