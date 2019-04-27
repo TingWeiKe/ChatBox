@@ -55,6 +55,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
+*.sqlite3
 
 # Flask stuff:
 instance/
@@ -102,3 +103,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Data
+dialogue/moviebot_data/*.bin
+dialogue/moviebot_data/*.pth
+dialogue/moviebot_data/*.tsv
+dialogue/moviebot_data/*.txt
+dialogue/stackbot_data/
+
+# vscode
+.vscode/

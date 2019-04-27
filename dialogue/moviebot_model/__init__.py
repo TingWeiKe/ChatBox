@@ -1,0 +1,1 @@
+from .new_seq2seq import NewSeq2seq
