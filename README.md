@@ -1,18 +1,22 @@
 # StackBoxer
 
-A full-stack work for a fancy chatroom chatting with a functional RL robot.
-This work basically combines two separate work: ChatBox and StackBot
+A fancy chatroom for you to chat with a functional DL robot.
+This work basically combines three separate work with full credits given to Ting-Wei Ke and Wayne Wu: <br>
+
+1. [StackBot](https://github.com/waynewu6250/ML_DL_Projects/tree/master/1.StackBot-on-telegram): A coding assistant to help you search answers on stackoverflow with a given code query. Designed and created by [Wayne Wu](https://github.com/waynewu6250).
+2. [MovieBot](https://github.com/waynewu6250/ML_DL_Projects/tree/master/5.Movie-bot-pytorch): A common chatting robot trained by movie dialogues. Designed and created by [Wayne Wu](https://github.com/waynewu6250).
+3. [ChatBox](https://github.com/TIngWeiKe/ChatBox): A web full-stack application of fancy chatroom designed and created by [Ting-Wei Ke](https://github.com/TIngWeiKe).
 
 ## Installation
 **Backend**
 * Clone this repository to your local machine
 
 > 
-    $ git clone https://github.com/TIngWeiKe/ChatBox
+    $ git clone https://github.com/waynewu6250/StackBoxer
 * In the directory where you placed the cloned repo, create a virtual environment for Python:
 >   
     $ pip install virtualenv
-    $ cd Chatbox
+    $ cd StackBoxer
     $ virtualenv env    
 * Activate your virtual environment
 >
