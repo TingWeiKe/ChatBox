@@ -8,7 +8,6 @@ This work basically combines two separate work: ChatBox and StackBot
 * Clone this repository to your local machine
 
 > 
-
     $ git clone https://github.com/TIngWeiKe/ChatBox
 * In the directory where you placed the cloned repo, create a virtual environment for Python:
 >   
