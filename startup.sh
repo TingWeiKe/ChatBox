@@ -5,4 +5,5 @@ docker-compose up -d
 pushd frontend/
 npm install
 npm start
-npm audit fix
+
+npm audix fix

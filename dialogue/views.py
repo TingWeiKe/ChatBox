@@ -17,7 +17,8 @@ bot = StackBoxer(RESOURCE_PATH)
 def DialogueViewSet(request):
     serializer = DialogueSerializer(data=request.data)
     if serializer.is_valid():
-        result = bot.generate_answer(convert(request.data["text"], 't2s'), request.data["mode"])
+        print(request.data)
+        result = bot.generate_answer(convert(request.data["text"], 't2s'), request.data["mode"],request.data["user_id"])
         serializer.save(result=result)
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
