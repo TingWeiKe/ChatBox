@@ -7,11 +7,10 @@ import { MessageManger } from './MessageProvider'
 import AlertMessage from './AlertMessage'
 import send from './sound/send.mp3'
 import receive from './sound/receive.mp3'
-let sendSound = new Audio(send)
-let receiveSound = new Audio(receive)
+const sendSound = new Audio(send)
+const receiveSound = new Audio(receive)
+
 export default function UserInput(props){
-	
-		
 	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
@@ -19,10 +18,10 @@ export default function UserInput(props){
 	// const [ counter, setcounter ] = useState(1)
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
-	const messageList = document.getElementById('message-list')
-	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
+
 	function generateRandId(){
-		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
+		return Math.random().toString(36).replace(/[^a-z]+/g, '')
 	}
 
 	async function handleKeyDown(e){
@@ -61,16 +60,17 @@ export default function UserInput(props){
 		if (text) {
 			let res = await axios.post('http://127.0.0.1:8000/api/', {
 				text: text,
+				user_id:localStorage.user_id,
 				mode: props.mode,
 			})
 			if (res.status === 200) {
 				return res
 			}
+		
 		}
 	}
 
 	function init(){
-		messageList.scrollTop = messageList.scrollHeight
 		setReturn(true)
 		setAlert(false)
 	}
@@ -83,6 +83,7 @@ export default function UserInput(props){
 		}
 		// Input is not Empty
 		if (text) {
+			document.getElementById('textarea').value = ''
 			let inputMessage = {
 				text: text,
 				type: 'user',
@@ -95,8 +96,6 @@ export default function UserInput(props){
 				type: props.mode,
 				message: inputMessage,
 			})
-			document.getElementById('textarea').value = ''
-			messageList.scrollTop = messageList.scrollHeight
 			// Send Request
 			let res = await getAnswer(text)
 			// request success with status code 200
@@ -112,26 +111,32 @@ export default function UserInput(props){
 					message: outputMessage,
 				})
 				sendSound.pause()
-				if(!iOS){
+				if (!iOS) {
 					receiveSound.play()
 				}
-				
-				sendSound.load()
 				setText('')
+				sendSound.load()
 				init()
 			}
 		}
 	}
 
+	function generateUserId() {
+		if (typeof localStorage !== 'undefined') {
+			if (!localStorage.user_id) {
+				localStorage.setItem('user_id', generateRandId())
+			}
+	}
+	}
 	return (
-		<div className='user-input'>
+		<div className='user-input' onLoad={()=>generateUserId()}>
+			{console.log('QQ')}
 			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />
 			</i>
-			<span id='playButton'></span>
+			<span id='playButton' />
 			<AlertMessage setReturn={setReturn} isAlert={isAlert} />
-			
 		</div>
 	)
 }
