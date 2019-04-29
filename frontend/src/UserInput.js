@@ -1,17 +1,16 @@
 import React from 'react'
 import axios from 'axios'
-import { useState, useContext } from 'react'
+import { useState, useContext,useEffect} from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { MessageManger } from './MessageProvider'
 import AlertMessage from './AlertMessage'
 import send from './sound/send.mp3'
 import receive from './sound/receive.mp3'
-let sendSound = new Audio(send)
-let receiveSound = new Audio(receive)
+const sendSound = new Audio(send)
+const receiveSound = new Audio(receive)
+
 export default function UserInput(props){
-	
-		
 	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
@@ -19,7 +18,6 @@ export default function UserInput(props){
 	// const [ counter, setcounter ] = useState(1)
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
-	const messageList = document.getElementById('message-list')
 	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	function generateRandId(){
 		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
@@ -70,7 +68,6 @@ export default function UserInput(props){
 	}
 
 	function init(){
-		messageList.scrollTop = messageList.scrollHeight
 		setReturn(true)
 		setAlert(false)
 	}
@@ -83,6 +80,7 @@ export default function UserInput(props){
 		}
 		// Input is not Empty
 		if (text) {
+			document.getElementById('textarea').value = ''
 			let inputMessage = {
 				text: text,
 				type: 'user',
@@ -95,8 +93,6 @@ export default function UserInput(props){
 				type: props.mode,
 				message: inputMessage,
 			})
-			document.getElementById('textarea').value = ''
-			messageList.scrollTop = messageList.scrollHeight
 			// Send Request
 			let res = await getAnswer(text)
 			// request success with status code 200
@@ -115,7 +111,6 @@ export default function UserInput(props){
 				if(!iOS){
 					receiveSound.play()
 				}
-				
 				sendSound.load()
 				setText('')
 				init()
@@ -125,6 +120,7 @@ export default function UserInput(props){
 
 	return (
 		<div className='user-input'>
+				{console.log('QQ')}
 			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />

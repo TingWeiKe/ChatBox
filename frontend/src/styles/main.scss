@@ -39,12 +39,6 @@ body {
 	}
 }
 
-#root {
-	::-webkit-scrollbar {
-		width: 0px; /* remove scrollbar space */
-		background: transparent; /* optional: just make scrollbar invisible */
-	}
-}
 
 .message-container {
 	position: relative;
@@ -71,7 +65,6 @@ body {
 .sidelist {
 	flex: 1 1 auto;
 	height: 90vh;
-	overflow-y: scroll;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	.side_header {
