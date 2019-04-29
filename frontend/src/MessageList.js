@@ -8,20 +8,20 @@ export default function MessageList(props){
 	let message = []
 	let x = [ messageState.mixMessage, messageState.enMessage, messageState.cnMessage, messageState.stMessage ]
 	message = x[robotState.index]
-
-	function y(){
+	
+	function scrollToBottom(){
 		document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
 	}
 
 	useEffect(() => {
-		document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
+		scrollToBottom()
 		return () => {
-			document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
+			scrollToBottom()
 		}
 	}, x)
 
 	return (
-		<div onLoad={() => y()} id='message-list'>
+		<div onLoad={() => scrollToBottom()} id='message-list'>
 			{message ? (
 				message.map((data) => {
 					return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { useState, useContext,useEffect} from 'react'
+import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { MessageManger } from './MessageProvider'
@@ -18,9 +18,10 @@ export default function UserInput(props){
 	// const [ counter, setcounter ] = useState(1)
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
-	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
+
 	function generateRandId(){
-		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
+		return Math.random().toString(36).replace(/[^a-z]+/g, '')
 	}
 
 	async function handleKeyDown(e){
@@ -59,11 +60,13 @@ export default function UserInput(props){
 		if (text) {
 			let res = await axios.post('http://127.0.0.1:8000/api/', {
 				text: text,
+				user_id:localStorage.user_id,
 				mode: props.mode,
 			})
 			if (res.status === 200) {
 				return res
 			}
+		
 		}
 	}
 
@@ -108,26 +111,32 @@ export default function UserInput(props){
 					message: outputMessage,
 				})
 				sendSound.pause()
-				if(!iOS){
+				if (!iOS) {
 					receiveSound.play()
 				}
-				sendSound.load()
 				setText('')
+				sendSound.load()
 				init()
 			}
 		}
 	}
 
+	function generateUserId() {
+		if (typeof localStorage !== 'undefined') {
+			if (!localStorage.user_id) {
+				localStorage.setItem('user_id', generateRandId())
+			}
+	}
+	}
 	return (
-		<div className='user-input'>
-				{console.log('QQ')}
+		<div className='user-input' onLoad={()=>generateUserId()}>
+			{console.log('QQ')}
 			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />
 			</i>
-			<span id='playButton'></span>
+			<span id='playButton' />
 			<AlertMessage setReturn={setReturn} isAlert={isAlert} />
-			
 		</div>
 	)
 }
