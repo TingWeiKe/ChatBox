@@ -5,7 +5,6 @@ from .utils import *
 from .bot import StackBot, MovieBot
 import time
 
-
 class StackBoxer:
     def __init__(self, paths):
         self.ANSWER_TEMPLATE = 'I think its about [%s]\nThis thread might help you: https://stackoverflow.com/questions/%s'
