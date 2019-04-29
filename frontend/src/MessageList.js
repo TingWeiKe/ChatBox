@@ -6,7 +6,7 @@ export default function MessageList(props){
 	const [ robotState ] = useContext(MessageManger)[2]
 	const [ state ] = useContext(MessageManger)[3]
 	let message = []
-	let x = [ state.enMessage, state.cnMessage, state.stMessage ]
+	let x = [ state.mixMessage,state.enMessage, state.cnMessage, state.stMessage ]
 	message = x[robotState.index]
 	
 	return (
