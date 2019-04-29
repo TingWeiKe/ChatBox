@@ -113,3 +113,6 @@ dialogue/stackbot_data/
 
 # vscode
 .vscode/
+
+_DS_Store
+.DS_Store
