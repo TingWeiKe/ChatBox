@@ -17,28 +17,35 @@
 * Install all required packages:
 >
     $ pip3 install -r requirements.txt
-* Put folders and files below to Chatbox/dialogue/
+* Put folders and files below to Chatbox/dialogue/ <br>
+Download the data at the following link: <br>
+https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
 >
-        
     dialogue/
-        + intent_recognizer.pkl
-        + tfidf_vectorizer.pkl
-        + tag_classifier.pkl
-        + word_embeddings.tsv
-       
-       thread_embeddings_by_tags/
-              + c_cpp.pkl
-              + c#.pkl
-              + java.pkl
-              + javascript.pkl
-              + php.pkl
-              + python.pkl
-              + r.pkl
-              + ruby.pkl
-              
-        data/
-              + dialogues.tsv
-              + tagged_posts.tsv 
+    └── moviebot_data/
+        ├── all_toks_new.bin
+        ├── data.bin
+        ├── memory.pth
+        ├── movie_conversations.txt
+        ├── movie_lines.tsv
+        ├── word2id.bin
+    
+    └── stackbot_data/
+        └── thread_embeddings_by_tags/
+            ├── c_cpp.pkl
+            ├── c#.pkl
+            ├── java.pkl
+            ├── javascript.pkl
+            ├── php.pkl
+            ├── python.pkl
+            ├── r.pkl
+            ├── ruby.pkl
+        ├── intent_recognizer.pkl
+        ├── stopwords.pkl
+        ├── tag_classifier.pkl
+        ├── tfidf_vectorizer.pkl
+        ├── word_embeddings.tsv
+
 * Start Django server    
 >
     $ python -W ignore manage.py migrate
