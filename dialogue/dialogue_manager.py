@@ -3,7 +3,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from .utils import *
 from .bot import StackBot, MovieBot
-import sleep
+import time
 
 class StackBoxer:
     def __init__(self, paths):
@@ -24,7 +24,7 @@ class StackBoxer:
         self.stack_bot = StackBot(paths)
     
     def generate_dialogue(self, question):
-        sleep(1)
+        time.sleep(1)
         return self.movie_bot.get_answer(question)
     
     def generate_goal(self, prepared_question, features):

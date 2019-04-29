@@ -38,4 +38,3 @@ torch
 torchvision
 visdom
 psycopg2
-sleep
