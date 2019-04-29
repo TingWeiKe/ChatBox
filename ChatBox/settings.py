@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nz^!05c&x+bj4n(+pizgj!xoo@y(*bl3zg58407-k=mo&@4m!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'chatbox.cc',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -124,7 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+CORS_ORIGIN_ALLOW_ALL=True
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    'chatbox.cc',
+    'tingweike.github.io',
+    '172.20.10.12'
 )

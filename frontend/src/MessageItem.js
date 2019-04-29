@@ -6,7 +6,7 @@ import { Transition } from 'semantic-ui-react'
 
 function MessageRobotItem(props){
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={200}>
+		<Transition transitionOnMount={true} animation='scale' duration={400}>
 			<div className='robot-message'>
 				<div className='msg_icon'>
 					<Image className='circle' src={props.icon} />
@@ -22,7 +22,7 @@ function MessageRobotItem(props){
 
 function MessageUserItem(props){
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={200}>
+		<Transition transitionOnMount={true} animation='scale' duration={400}>
 			<div className='user-message'>
 				<div className='msg_icon'>
 					<Image className='circle' src={userIcon} />

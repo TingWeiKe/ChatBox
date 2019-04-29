@@ -5,8 +5,13 @@ import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { MessageManger } from './MessageProvider'
 import AlertMessage from './AlertMessage'
-
+import send from './sound/send.mp3'
+import receive from './sound/receive.mp3'
+let sendSound = new Audio(send)
+let receiveSound = new Audio(receive)
 export default function UserInput(props){
+	
+		
 	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
 	const [ isAlert, setAlert ] = useState(false)
@@ -15,7 +20,7 @@ export default function UserInput(props){
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
 	const messageList = document.getElementById('message-list')
-
+	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	function generateRandId(){
 		return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
 	}
@@ -54,7 +59,7 @@ export default function UserInput(props){
 
 	async function getAnswer(text){
 		if (text) {
-			let res = await axios.post('http://localhost:8000/api/', {
+			let res = await axios.post('http://127.0.0.1:8000/api/', {
 				text: text,
 				mode: props.mode,
 			})
@@ -71,34 +76,48 @@ export default function UserInput(props){
 	}
 
 	async function updateMessage(text){
+		// Wait for the robot
 		if (isReturned !== true && text !== '') {
 			setAlert(true)
 			return
 		}
+		// Input is not Empty
 		if (text) {
-			let x = {
+			let inputMessage = {
 				text: text,
 				type: 'user',
 				time: new Date().toLocaleString(),
 				id: generateRandId(),
 			}
-			await setInput([ ...input, x ])
+			sendSound.play()
+			await setInput([ ...input, inputMessage ])
 			await dispatch({
 				type: props.mode,
-				message: x,
+				message: inputMessage,
 			})
 			document.getElementById('textarea').value = ''
 			messageList.scrollTop = messageList.scrollHeight
+			// Send Request
 			let res = await getAnswer(text)
+			// request success with status code 200
 			if (res.status === 200 && isAlert === false) {
-				let y = {
+				let outputMessage = {
 					text: res.data.result,
 					type: 'robot',
 					time: new Date().toLocaleString(),
 					id: res.data.id,
 				}
+				await dispatch({
+					type: props.mode,
+					message: outputMessage,
+				})
+				sendSound.pause()
+				if(!iOS){
+					receiveSound.play()
+				}
+				
+				sendSound.load()
 				setText('')
-				await dispatch({ type: props.mode, message: y })
 				init()
 			}
 		}
@@ -110,7 +129,9 @@ export default function UserInput(props){
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />
 			</i>
+			<span id='playButton'></span>
 			<AlertMessage setReturn={setReturn} isAlert={isAlert} />
+			
 		</div>
 	)
 }

@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	background-image: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5) !important;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-	padding: 3% 10% !important;
+	padding: 3% 8% !important;
 }
 @media all and (max-width: 992px) {
 	body {
@@ -30,7 +30,6 @@ body {
 	}
 	.msg_cont {
 		max-width: -webkit-fill-available;
-		overflow-y: -webkit-paged-y;
 		position: unset !important;
 		margin: 0 !important;
 	}
@@ -77,15 +76,18 @@ body {
 	border-radius: 15px !important;
 	.side_header {
 		color: white;
-		font-size: 24px;
 		text-align: center;
 		height: 80px;
 		padding: .75rem 1.25rem;
 		margin-bottom: 0;
 		background-color: rgba(0, 0, 0, 0.1);
-		>div{
+		> #header {
+			font-size: 24px;
 			margin-bottom: 10px;
 			margin-top: 4px;
+		}
+		> #sub_header {
+			font-size: 16px;
 		}
 	}
 	.side_box {
@@ -194,6 +196,7 @@ body {
 	}
 
 	> .msg_cont {
+		max-width: 85%;
 		padding: 0 10px;
 		display: inline-block;
 		position: relative;
@@ -223,8 +226,11 @@ body {
 	}
 
 	> .msg_cont {
+		max-width: 85%;
+    word-wrap: break-word;
 		padding: 0 10px;
 		float: right;
+		position: relative;
 		border-radius: 25px;
 		background-color: #78e08f;
 		padding: 10px;

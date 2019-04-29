@@ -31,16 +31,19 @@ export default function SideList(){
 	return (
 		<div className='sidelist'>
 			<div className='side_header'>
-			<div>ChatBox <span role="img" aria-label="Robot">🤖🤖</span> </div>
-			<div>Chatting with a Deep learning brain</div>
-			
+				<div id='header'>
+					ChatBox{' '}
+					<span role='img' aria-label='Robot'>
+						🤖🤖
+					</span>{' '}
+				</div>
+				<div id='sub_header'>Chatting with a Deep learning brain</div>
 			</div>
 			{robots ? (
 				robots.map((data) => {
 					return <RobotItem data={data} />
 				})
 			) : null}
-
 		</div>
 	)
 }
