@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import { headRobotIcon, chineseIcon, stIcon } from './styles/icons'
+import { headRobotIcon, chineseIcon, stIcon, mixRobotIcon } from './styles/icons'
 import RobotItem from './RobotItem'
 
 export default function SideList(){
 	const initialState = [
 		{
+			title: 'MixRobot',
+			info: '(English Chatbot + StackBot)',
+			action: 'TO_MIX',
+			mode: 'mix',
+			icon: mixRobotIcon,
+		},
+		{
 			title: 'English Chatbot',
-			info: 'English Chatbot',
+			info: '(English Chatbot)',
 			action: 'TO_EN',
 			mode: 'en',
 			icon: headRobotIcon,
@@ -19,7 +26,7 @@ export default function SideList(){
 			icon: chineseIcon,
 		},
 		{
-			title: 'StackOverFlowBot',
+			title: 'StackBot',
 			info: '( StackOverFlow Chatbot )',
 			action: 'TO_STOF',
 			mode: 'stof',
@@ -41,7 +48,7 @@ export default function SideList(){
 			</div>
 			{robots ? (
 				robots.map((data) => {
-					return <RobotItem data={data} />
+					return <RobotItem key={data.title} data={data} />
 				})
 			) : null}
 		</div>
