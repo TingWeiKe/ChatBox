@@ -6,6 +6,7 @@ import { MessageManger } from './MessageProvider'
 import { headRobotIcon } from './styles/icons'
 
 export default function Message(){
+
 	const state= useContext(MessageManger)[2][0]
 	let icon = state.hasOwnProperty('icon') ? state.icon : headRobotIcon
 	return (
