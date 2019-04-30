@@ -52,15 +52,21 @@ class MovieBot:
         self.seq2seq =  NewSeq2seq(num_tokens=self.mydata.data.num_tokens,
                                    opt=opt,
                                    sos_id=self.mydata.data.word2id["<START>"])
+        
+        # user_id database
+        self.answerdb = {}
 
         torch.backends.cudnn.enabled = False
 
-    def get_answer(self, question):
+    def get_answer(self, question, user_id):
+
+        if user_id not in self.answerdb:
+            self.answerdb['user_id'] = ""
+        self.prev_sentence = self.answerdb['user_id']
 
         if opt.prev_sent == 2:
             data = self.prev_sentence + question
         data = ' '.join(data.split(' '))
-        
         
         if opt.model_path:
             self.seq2seq.load_state_dict(torch.load(opt.model_path, map_location="cpu"))
@@ -86,5 +92,5 @@ class MovieBot:
                     sampled_tok = toks_to_replace[sampled_tok]
                 decoded_sequence += sampled_tok+' '
         
-        self.prev_sentence = decoded_sequence
+        self.answerdb['user_id'] = decoded_sequence
         return decoded_sequence
