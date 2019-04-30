@@ -61,8 +61,8 @@ class MovieBot:
     def get_answer(self, question, user_id):
 
         if user_id not in self.answerdb:
-            self.answerdb['user_id'] = ""
-        self.prev_sentence = self.answerdb['user_id']
+            self.answerdb[user_id] = ""
+        self.prev_sentence = self.answerdb[user_id]
 
         if opt.prev_sent == 2:
             data = self.prev_sentence + question
@@ -92,5 +92,5 @@ class MovieBot:
                     sampled_tok = toks_to_replace[sampled_tok]
                 decoded_sequence += sampled_tok+' '
         
-        self.answerdb['user_id'] = decoded_sequence
+        self.answerdb[user_id] = decoded_sequence
         return decoded_sequence
