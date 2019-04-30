@@ -9,22 +9,15 @@ This work basically combines three separate work with full credits given to: <br
 * [ChatBox](https://github.com/TIngWeiKe/ChatBox): A web full-stack application of fancy chatroom designed and created by [Ting-Wei Ke](https://github.com/TIngWeiKe).
 
 ## Installation
-**Backend**
+**Docker**
+* If docker not installed on local terminal, please visit https://www.docker.com/get-started to download.
+
+**Get Started**
 * Clone this repository to your local machine
 
 > 
     $ git clone https://github.com/waynewu6250/StackBoxer
-* In the directory where you placed the cloned repo, create a virtual environment for Python:
->   
-    $ pip install virtualenv
-    $ cd StackBoxer
-    $ virtualenv env    
-* Activate your virtual environment
->
-    $ source env/bin/activate
-* Install all required packages:
->
-    $ pip3 install -r requirements.txt
+
 * Put folders and files below to Chatbox/dialogue/ <br>
 Download the data at the following link: <br>
 https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
@@ -54,21 +47,7 @@ https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
         ├── tfidf_vectorizer.pkl
         ├── word_embeddings.tsv
 
-* Start Django server    
+* Run the bash script: <br>
+(It will generate backend in docker container and run frontend app in local terminal)
 >
-    $ python -W ignore manage.py migrate
-    $ python -W ignore manage.py runserver
-              
-              
- 
-**Frontend**
-
-* In another terminal:
->
-    $ cd frontend
-* Install all required packages
->
-    $ npm install
-* Start Webpack-dev-server
->
-    $ npm start
+    sudo bash startup.sh
