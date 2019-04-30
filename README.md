@@ -24,12 +24,10 @@ https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
 >
     dialogue/
     └── moviebot_data/
-        ├── all_toks_new.bin
         ├── data.bin
         ├── memory.pth
         ├── movie_conversations.txt
         ├── movie_lines.tsv
-        ├── word2id.bin
     
     └── stackbot_data/
         └── thread_embeddings_by_tags/
