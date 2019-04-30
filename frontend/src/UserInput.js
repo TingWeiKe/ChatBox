@@ -57,6 +57,7 @@ export default function UserInput(props){
 	}
 
 	async function getAnswer(text){
+		generateUserId()
 		if (text) {
 			let res = await axios.post('http://127.0.0.1:8000/api/', {
 				text: text,
@@ -129,8 +130,7 @@ export default function UserInput(props){
 	}
 	}
 	return (
-		<div className='user-input' onLoad={()=>generateUserId()}>
-			{console.log('QQ')}
+		<div className='user-input'>
 			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
 			<i onClick={() => updateMessage(text)} className='submit'>
 				<Image className='enterIcon' src={enterIcon} />
