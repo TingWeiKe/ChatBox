@@ -23,9 +23,9 @@ class StackBoxer:
         self.tag_classifier = unpickle_file(paths['TAG_CLASSIFIER'])
         self.stack_bot = StackBot(paths)
 
-    def generate_dialogue(self, question):
+    def generate_dialogue(self, question, user_id):
         time.sleep(1)
-        return self.movie_bot.get_answer(question)
+        return self.movie_bot.get_answer(question, user_id)
 
     def generate_goal(self, prepared_question, features):
         tag = self.tag_classifier.predict(features)[0]
@@ -50,7 +50,7 @@ class StackBoxer:
         if(cn_db_exists != True):
             self.cn_chatbot.train("chatterbot.corpus.chinese")
 
-    def generate_answer(self, question, mode, use_id):
+    def generate_answer(self, question, mode, user_id):
         """Combines stackoverflow and chitchat parts using intent recognition."""
         def is_unicode(text):
             return len(text) == len(text.encode())
@@ -64,7 +64,7 @@ class StackBoxer:
             # 2. Dialogue-oriented part:
             if intent == 'dialogue':
                 if(is_unicode(question)):
-                    response = self.generate_dialogue(question)
+                    response = self.generate_dialogue(question, user_id)
                     return response
                 else:
                     response = 'Hmm, you are sending some weird characters to me...'
@@ -74,7 +74,7 @@ class StackBoxer:
 
         elif mode == 'en':
             if(is_unicode(question)):
-                response = self.generate_dialogue(question)
+                response = self.generate_dialogue(question, user_id)
                 return response
             else:
                 response = 'Hmm, you are sending some weird characters to me...'
