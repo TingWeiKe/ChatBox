@@ -37,12 +37,4 @@ git+https://github.com/pytorch/tnt.git@master
 torch
 torchvision
 visdom
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 psycopg2
-sleep
->>>>>>> 77667a7c6bd444d8220ea767ab44d165d43e0f44
-=======
-psycopg2
->>>>>>> a3aea10b02526cd330365ee33221f0414df41489
