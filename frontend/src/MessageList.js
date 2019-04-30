@@ -1,16 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import MessageItem from './MessageItem'
 import { MessageManger } from './MessageProvider'
 
 export default function MessageList(props){
 	const [ robotState ] = useContext(MessageManger)[2]
-	const [ state ] = useContext(MessageManger)[3]
+	const [ messageState ] = useContext(MessageManger)[3]
 	let message = []
-	let x = [ state.mixMessage,state.enMessage, state.cnMessage, state.stMessage ]
+	let x = [ messageState.mixMessage, messageState.enMessage, messageState.cnMessage, messageState.stMessage ]
 	message = x[robotState.index]
 	
+	function scrollToBottom(){
+		document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
+	}
+
+	useEffect(() => {
+		scrollToBottom()
+		return () => {
+			scrollToBottom()
+		}
+	}, x)
+
 	return (
-		<div id='message-list'>
+		<div onLoad={() => scrollToBottom()} id='message-list'>
 			{message ? (
 				message.map((data) => {
 					return (

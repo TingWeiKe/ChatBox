@@ -6,4 +6,4 @@ class DialogueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dialogue
         # fields = '__all__'
-        fields = ('id', 'text', 'mode', 'result', 'created')
+        fields = ('id', 'text', 'user_id', 'mode', 'result', 'created')
