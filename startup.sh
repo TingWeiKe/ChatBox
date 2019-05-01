@@ -21,5 +21,6 @@ wait
 # npm
 pushd frontend/
 npm install
-npm start
 npm audit fix
+npm start
+
