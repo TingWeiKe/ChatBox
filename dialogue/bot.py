@@ -45,52 +45,64 @@ class MovieBot:
     def __init__(self):
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         self.prev_sentence = ""
-        # dataset
-        self.mydata = TrainData(opt.data_path, opt.conversation_path, opt.results_path, opt.prev_sent, True)
-
-        # models
-        self.seq2seq =  NewSeq2seq(num_tokens=self.mydata.data.num_tokens,
-                                   opt=opt,
-                                   sos_id=self.mydata.data.word2id["<START>"])
-        
         # user_id database
         self.answerdb = {}
 
         torch.backends.cudnn.enabled = False
 
-    def get_answer(self, question, user_id):
+    def get_answer(self, question, user_id, chinese):
 
         if user_id not in self.answerdb:
             self.answerdb[user_id] = ""
         self.prev_sentence = self.answerdb[user_id]
 
         if opt.prev_sent == 2:
-            data = self.prev_sentence + question
-        data = ' '.join(data.split(' '))
+            data = (self.prev_sentence + question) if not chinese else question
         
+        # Dataset
+        if chinese:
+            data = list(convert(data, 't2s'))
+            mydata = TrainData(opt.chinese_data_path, opt.conversation_path, opt.chinese_results_path, chinese, opt.prev_sent, True)
+        else:
+            data = ' '.join(data.split(' '))
+            mydata = TrainData(opt.data_path, opt.conversation_path, opt.results_path, chinese, opt.prev_sent, True)
+        
+        # models
+        seq2seq = NewSeq2seq(num_tokens=mydata.data.num_tokens,
+                             opt=opt,
+                             sos_id=mydata.data.word2id["<START>"],
+                             chinese=chinese)
         if opt.model_path:
-            self.seq2seq.load_state_dict(torch.load(opt.model_path, map_location="cpu"))
-        self.seq2seq = self.seq2seq.to(self.device)
+            if chinese:
+                seq2seq.load_state_dict(torch.load(opt.chinese_model_path, map_location="cpu"))
+            else:
+                seq2seq.load_state_dict(torch.load(opt.model_path, map_location="cpu"))
+        seq2seq = seq2seq.to(self.device)
 
         # Predict
-        encoder_data = self.mydata._test_batch(data, 2*opt.mxlen).to(self.device)
-        decoded_indices, decoder_hidden1, decoder_hidden2 = self.seq2seq.evaluation(encoder_data)
-        
+        encoder_data = mydata._test_batch(data, 2*opt.mxlen if not chinese else opt.mxlen).to(self.device)
+        decoded_indices, decoder_hidden1, decoder_hidden2 = seq2seq.evaluation(encoder_data)
+
         toks_to_replace = {"i":"I","im":"I'm","id":"I'd","ill":"I'll","iv":"I'v","hes":"he's","shes":"she's",
                            "youre":"you're","its":"it's","dont":"don't","youd":"you'd","cant":"can't","thats":"that's",
                            "isnt":"isn't","didnt":"didn't","hows":"how's","ive":"I've"}
 
         decoded_sequence = ""
         for idx in decoded_indices:
-            sampled_tok = self.mydata.data.id2word[idx]
+            sampled_tok = mydata.data.id2word[idx]
             if sampled_tok == "<START>":
                 continue
             elif sampled_tok == "<EOS>":
                 break
             else:
-                if sampled_tok in toks_to_replace:
-                    sampled_tok = toks_to_replace[sampled_tok]
-                decoded_sequence += sampled_tok+' '
+                if not chinese:
+                    if sampled_tok in toks_to_replace:
+                        sampled_tok = toks_to_replace[sampled_tok]
+                    decoded_sequence += sampled_tok+' '
+                else:
+                    decoded_sequence += sampled_tok
         
+        decoded_sequence = decoded_sequence if not chinese \
+                           else convert(decoded_sequence,'s2t').replace("雞仔","我").replace("主人","跟你說").replace("主子哦","").replace("主子","跟你說")
         self.answerdb[user_id] = decoded_sequence
         return decoded_sequence

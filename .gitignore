@@ -110,6 +110,7 @@ dialogue/moviebot_data/*.pth
 dialogue/moviebot_data/*.tsv
 dialogue/moviebot_data/*.txt
 dialogue/stackbot_data/
+*.conv
 
 # vscode
 .vscode/
