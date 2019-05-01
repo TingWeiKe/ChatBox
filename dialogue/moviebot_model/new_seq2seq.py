@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 
 class NewSeq2seq(nn.Module):
-    def __init__(self, num_tokens, opt, sos_id):
+    def __init__(self, num_tokens, opt, sos_id, chinese):
 
         super(NewSeq2seq, self).__init__()
         self.embedding = nn.Embedding(num_tokens, opt.char_dim)
@@ -18,6 +18,7 @@ class NewSeq2seq(nn.Module):
         self.latent_dim = opt.latent_dim
         self.num_tokens = num_tokens
         self.time_steps = opt.mxlen
+        self.chinese = chinese
         self.sos_id = sos_id
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     
@@ -32,7 +33,7 @@ class NewSeq2seq(nn.Module):
         embedded = self.embedding(input_var)
         embedded = self.dense(embedded)
         outputs1, hidden1 = self.lstm1(embedded, hidden1)
-        padding = torch.zeros(2*self.time_steps, self.batch_size, self.latent_dim).to(self.device)
+        padding = torch.zeros(2*self.time_steps if not self.chinese else self.time_steps, self.batch_size, self.latent_dim).to(self.device)
         outputs2, hidden2 = self.lstm2(torch.cat([padding,outputs1],-1),hidden2)
         return outputs2, hidden1, hidden2
     

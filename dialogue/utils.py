@@ -27,6 +27,10 @@ class Config:
     results_path = "dialogue/moviebot_data/data.bin"
     prev_sent = 2
 
+    # for chinese dataset
+    chinese_data_path = "dialogue/moviebot_data/xiaohuangji50w_fenciA.conv"
+    chinese_results_path = "dialogue/moviebot_data/chinese_data.bin"
+
     # for training
     epochs = 120
     batch_size = 256
@@ -38,6 +42,7 @@ class Config:
     mxlen= 20
     teacher_forcing_ratio = .5
     model_path = "dialogue/moviebot_data/memory.pth"
+    chinese_model_path = "dialogue/moviebot_data/memory_chinese.pth"
 
 opt = Config()
 
