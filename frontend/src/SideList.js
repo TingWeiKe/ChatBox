@@ -6,14 +6,14 @@ export default function SideList(){
 	const initialState = [
 		{
 			title: 'MixRobot',
-			info: '(English Chatbot + StackBot)',
+			info: '( EnglishBot + StackBot )',
 			action: 'TO_MIX',
 			mode: 'mix',
 			icon: mixRobotIcon,
 		},
 		{
 			title: 'English Chatbot',
-			info: '(English Chatbot)',
+			info: '( English Chatbot )',
 			action: 'TO_EN',
 			mode: 'en',
 			icon: headRobotIcon,
