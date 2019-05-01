@@ -18,9 +18,17 @@ This work basically combines three separate work with full credits given to: <br
 > 
     $ git clone https://github.com/waynewu6250/StackBoxer
 
-* Put folders and files below to Chatbox/dialogue/ <br>
-Download the data at the following link: <br>
-https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
+
+* Run the bash script: <br>
+(It will download data, generate backend in docker container and run frontend app in local terminal. Make sure you have unzip tools installed on your local terminal)
+>
+    sudo bash startup.sh
+
+***************************************************
+## Data Reference
+* Here is the data link for your reference: <br>
+https://www.dropbox.com/sh/6it184fgyln7jv2/AACC2Gy1Oct7SX7BvayypZACa?dl=0
+
 >
     dialogue/
     └── moviebot_data/
@@ -45,7 +53,4 @@ https://drive.google.com/drive/u/1/folders/1MqiV3216tSacuT7ee_invZx8aMdvQSwT
         ├── tfidf_vectorizer.pkl
         ├── word_embeddings.tsv
 
-* Run the bash script: <br>
-(It will generate backend in docker container and run frontend app in local terminal)
->
-    sudo bash startup.sh
+
