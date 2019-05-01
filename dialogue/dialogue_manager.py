@@ -1,6 +1,4 @@
 import os
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
 from .utils import *
 from .bot import StackBot, MovieBot
 import time
@@ -17,38 +15,19 @@ class StackBoxer:
 
         # 2. Dialogue-oriented part:
         self.movie_bot = MovieBot()
-        self.create_chinese_bot()
 
         # 3. Goal-oriented part:
         self.tag_classifier = unpickle_file(paths['TAG_CLASSIFIER'])
         self.stack_bot = StackBot(paths)
 
-    def generate_dialogue(self, question, user_id):
-        time.sleep(1)
-        return self.movie_bot.get_answer(question, user_id)
+    def generate_dialogue(self, question, user_id, chinese):
+        return self.movie_bot.get_answer(question, user_id, chinese)
 
     def generate_goal(self, prepared_question, features):
         tag = self.tag_classifier.predict(features)[0]
         thread_id = self.stack_bot.get_best_thread(prepared_question, tag)
 
         return self.ANSWER_TEMPLATE % (tag, thread_id)
-
-    def create_chinese_bot(self):
-        def db_exists(path):
-            return os.path.isfile(path)
-        """Initializes chinese robot with customized conversational model."""
-
-        cn_db_exists = db_exists('cn_db.sqlite3')
-
-        self.cn_chatbot = ChatBot(
-            'chinese',
-            trainer='chatterbot.trainers.ChatterBotCorpusTrainer',
-            database_uri='sqlite:///cn_db.sqlite3',
-            read_only=cn_db_exists
-        )
-
-        if(cn_db_exists != True):
-            self.cn_chatbot.train("chatterbot.corpus.chinese")
 
     def generate_answer(self, question, mode, user_id):
         """Combines stackoverflow and chitchat parts using intent recognition."""
@@ -64,27 +43,33 @@ class StackBoxer:
             # 2. Dialogue-oriented part:
             if intent == 'dialogue':
                 if(is_unicode(question)):
-                    response = self.generate_dialogue(question, user_id)
+                    response = self.generate_dialogue(question, user_id, False)
                     return response
                 else:
-                    response = 'Hmm, you are sending some weird characters to me...'
+                    response = self.generate_dialogue(question, user_id, True)
                     return response
             else:
                 return self.generate_goal(prepared_question, features)
 
         elif mode == 'en':
             if(is_unicode(question)):
-                response = self.generate_dialogue(question, user_id)
+                response = self.generate_dialogue(question, user_id, False)
                 return response
             else:
+                time.sleep(1)
                 response = 'Hmm, you are sending some weird characters to me...'
                 return response
 
+        elif mode == "cn":
+            if(is_unicode(question)):
+                time.sleep(1)
+                response = '我不吃中文以外的東西拉!'
+                return response
+            else:
+                response = self.generate_dialogue(question, user_id, True)
+                return response
+        
         elif mode == 'stof':
             prepared_question = text_prepare(question)
             features = self.tfidf_vectorizer.transform([prepared_question])
             return self.generate_goal(prepared_question, features)
-
-        elif mode == "cn":
-            response = self.cn_chatbot.get_response(question)
-            return convert(str(response), 's2t')
