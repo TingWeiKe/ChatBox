@@ -11,15 +11,10 @@ export default function App(){
 		<MessageProvider>
 			<div className='App'>
 				<Grid stretched={true} stackable={true}>
-
-				
 					<Responsive as={Grid.Row} maxWidth={1199} minWidth={768}>
 						<InfoBox/>
 					</Responsive>
-
 					<Grid.Row>
-					
-						
 						<Grid.Column widescreen={4}  largeScreen={4} computer={6} tablet={7}>
 							<RobotList />
 						</Grid.Column>

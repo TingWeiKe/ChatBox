@@ -4,7 +4,6 @@ import { useState, useContext } from 'react'
 import { Image } from 'semantic-ui-react'
 import { enterIcon } from './styles/icons'
 import { MessageManger } from './MessageProvider'
-import AlertMessage from './AlertMessage'
 import send from './sound/send.mp3'
 import receive from './sound/receive.mp3'
 const sendSound = new Audio(send)
@@ -13,9 +12,7 @@ const receiveSound = new Audio(receive)
 export default function UserInput(props){
 	const [ input, setInput ] = useContext(MessageManger)
 	const [ isReturned, setReturn ] = useState(true)
-	const [ isAlert, setAlert ] = useState(false)
 	const [ text, setText ] = useState('')
-	// const [ counter, setcounter ] = useState(1)
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
 	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
@@ -24,7 +21,15 @@ export default function UserInput(props){
 		return Math.random().toString(36).replace(/[^a-z]+/g, '')
 	}
 
-	async function handleKeyDown(e){
+	function generateUserId(){
+		if (typeof localStorage !== 'undefined') {
+			if (!localStorage.user_id) {
+				localStorage.setItem('user_id', generateRandId())
+			}
+		}
+	}
+
+	function handleKeyDown(e){
 		function isIputExist(){
 			return input.length - counter.current > 0
 		}
@@ -61,29 +66,32 @@ export default function UserInput(props){
 		if (text) {
 			let res = await axios.post('http://127.0.0.1:8000/api/', {
 				text: text,
-				user_id:localStorage.user_id,
+				user_id: localStorage.user_id,
 				mode: props.mode,
 			})
-			if (res.status === 200) {
-				return res
-			}
-		
+			return res
 		}
 	}
 
 	function init(){
 		setReturn(true)
-		setAlert(false)
+		if (props.isAlert === true) {
+			props.setAlert(false)
+		}
 	}
 
 	async function updateMessage(text){
-		// Wait for the robot
+		// Alert 'Wait for the robot' message
 		if (isReturned !== true && text !== '') {
-			setAlert(true)
+			props.setAlert(true)
+			setTimeout(() => {
+				props.setAlert(false)
+			}, 2500)
 			return
 		}
 		// Input is not Empty
-		if (text) {
+		if (text && isReturned === true) {
+			setReturn(false)
 			document.getElementById('textarea').value = ''
 			let inputMessage = {
 				text: text,
@@ -92,43 +100,41 @@ export default function UserInput(props){
 				id: generateRandId(),
 			}
 			sendSound.play()
-			await setInput([ ...input, inputMessage ])
-			await dispatch({
+			setInput([ ...input, inputMessage ])
+			dispatch({
 				type: props.mode,
 				message: inputMessage,
 			})
 			// Send Request
-			let res = await getAnswer(text)
-			// request success with status code 200
-			if (res.status === 200 && isAlert === false) {
-				let outputMessage = {
-					text: res.data.result,
-					type: 'robot',
-					time: new Date().toLocaleString(),
-					id: res.data.id,
+			getAnswer(text).then(
+				(res) => {
+					// request success with status code 200
+					if (res.status === 200) {
+						let outputMessage = {
+							text: res.data.result,
+							type: 'robot',
+							time: new Date().toLocaleString(),
+							id: res.data.id,
+						}
+						dispatch({
+							type: props.mode,
+							message: outputMessage,
+						})
+						if (!iOS) {
+							receiveSound.play()
+						}
+						setText('')
+						sendSound.load()
+						init()
+					}
+				},
+				(error) => {
+					setReturn(true)
 				}
-				await dispatch({
-					type: props.mode,
-					message: outputMessage,
-				})
-				sendSound.pause()
-				if (!iOS) {
-					receiveSound.play()
-				}
-				setText('')
-				sendSound.load()
-				init()
-			}
+			)
 		}
 	}
 
-	function generateUserId() {
-		if (typeof localStorage !== 'undefined') {
-			if (!localStorage.user_id) {
-				localStorage.setItem('user_id', generateRandId())
-			}
-	}
-	}
 	return (
 		<div className='user-input'>
 			<input id='textarea' type='text' placeholder='Type your message...' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setText(e.target.value)} />
@@ -136,7 +142,6 @@ export default function UserInput(props){
 				<Image className='enterIcon' src={enterIcon} />
 			</i>
 			<span id='playButton' />
-			<AlertMessage setReturn={setReturn} isAlert={isAlert} />
 		</div>
 	)
 }

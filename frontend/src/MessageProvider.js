@@ -16,9 +16,7 @@ export default function MessageProvider({ children }){
 
 	let initMessageState = { mixMessage: [], enMessage: [], cnMessage: [], stMessage: [] }
 	if (typeof localStorage !== 'undefined') {
-		// 瀏覽器是否支援Storage
 		if (!localStorage.message) {
-			//瀏覽器是否已存Storage
 			localStorage.setItem('message', JSON.stringify(initMessageState))
 		}
 	}
