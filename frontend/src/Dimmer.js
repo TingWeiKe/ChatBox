@@ -5,12 +5,14 @@ export default function Dimmer(props){
 	const messageDispatch = useContext(MessageManger)[3][1]
 	const setDimmer = props.setDimmer
 	let dim = props.is_dim ? { display: 'block' } : { display: 'none' }
+
 	function handleCleanHistory(){
 		messageDispatch({ type: 'init' })
 		localStorage.removeItem('message')
 		localStorage.removeItem('user_id')
 		setDimmer(false)
 	}
+	
 	return (
 		<div>
 			<div style={dim} id='dimmer' onClick={() => setDimmer(false)} />
