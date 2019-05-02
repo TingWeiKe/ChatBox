@@ -20,7 +20,13 @@ wait
 
 # npm
 pushd frontend/
-npm install
-npm audit fix
+# Download Data
+
+if [ -d "node_modules/" ]; then
+    echo "The node_modules have been installed"
+else
+    npm install
+    npm audit fix
+fi
 npm start
 

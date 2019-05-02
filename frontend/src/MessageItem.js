@@ -37,6 +37,6 @@ function MessageUserItem(props){
 }
 
 export default function MessageItem(props){
-	let icon = props.icon
+	const icon = props.icon
 	return props.type === 'user' ? <MessageUserItem props={props} /> : <MessageRobotItem props={props} icon={icon} />
 }

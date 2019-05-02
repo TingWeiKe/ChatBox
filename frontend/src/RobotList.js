@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { headRobotIcon, chineseIcon, stIcon, mixRobotIcon } from './styles/icons'
 import RobotItem from './RobotItem'
 
-export default function SideList(){
+export default function RobotList(){
 	const initialState = [
 		{
 			title: 'MixRobot',

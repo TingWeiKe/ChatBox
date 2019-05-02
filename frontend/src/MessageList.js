@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import MessageItem from './MessageItem'
+import RobotTypingItem from './RobotTypingItem'
 import { MessageManger } from './MessageProvider'
+import AlertMessage from './AlertMessage'
 
 export default function MessageList(props){
 	const [ robotState ] = useContext(MessageManger)[2]
@@ -8,13 +10,12 @@ export default function MessageList(props){
 	let message = []
 	let x = [ messageState.mixMessage, messageState.enMessage, messageState.cnMessage, messageState.stMessage ]
 	message = x[robotState.index]
-	
+
 	function scrollToBottom(){
 		document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
 	}
 
 	useEffect(() => {
-		scrollToBottom()
 		return () => {
 			scrollToBottom()
 		}
@@ -22,6 +23,7 @@ export default function MessageList(props){
 
 	return (
 		<div onLoad={() => scrollToBottom()} id='message-list'>
+			<AlertMessage isAlert={props.isAlert} />
 			{message ? (
 				message.map((data) => {
 					return (
@@ -31,6 +33,7 @@ export default function MessageList(props){
 					)
 				})
 			) : null}
+			<RobotTypingItem type={'typing'} icon={robotState.icon} />
 		</div>
 	)
 }
