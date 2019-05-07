@@ -43,31 +43,25 @@ class StackBoxer:
             # 2. Dialogue-oriented part:
             if intent == 'dialogue':
                 if(is_unicode(question)):
-                    response = self.generate_dialogue(question, user_id, False)
-                    return response
+                    return self.generate_dialogue(question, user_id, False)
                 else:
-                    response = self.generate_dialogue(question, user_id, True)
-                    return response
+                    return self.generate_dialogue(question, user_id, True)
             else:
                 return self.generate_goal(prepared_question, features)
 
         elif mode == 'en':
             if(is_unicode(question)):
-                response = self.generate_dialogue(question, user_id, False)
-                return response
+                return self.generate_dialogue(question, user_id, False)
             else:
                 time.sleep(1)
-                response = 'Hmm, you are sending some weird characters to me...'
-                return response
+                return 'Hmm, you are sending some weird characters to me...'
 
         elif mode == "cn":
             if(is_unicode(question)):
                 time.sleep(1)
-                response = '我不吃中文以外的東西拉!'
-                return response
+                return '我不吃中文以外的東西拉!'
             else:
-                response = self.generate_dialogue(question, user_id, True)
-                return response
+                return self.generate_dialogue(question, user_id, True)
         
         elif mode == 'stof':
             prepared_question = text_prepare(question)
