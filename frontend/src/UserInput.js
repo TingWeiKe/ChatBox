@@ -92,6 +92,7 @@ export default function UserInput(props){
 		// Input is not Empty
 		if (text && isReturned === true) {
 			setReturn(false)
+			sendSound.play()
 			document.getElementById('textarea').value = ''
 			let inputMessage = {
 				text: text,
@@ -99,7 +100,6 @@ export default function UserInput(props){
 				time: new Date().toLocaleString(),
 				id: generateRandId(),
 			}
-			sendSound.play()
 			setInput([ ...input, inputMessage ])
 			dispatch({
 				type: props.mode,
