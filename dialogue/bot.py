@@ -103,6 +103,6 @@ class MovieBot:
                     decoded_sequence += sampled_tok
         
         decoded_sequence = decoded_sequence if not chinese \
-                           else convert(decoded_sequence,'s2t').replace("雞仔","我").replace("主人","跟你說").replace("主子哦","").replace("主子","跟你說")
+                           else convert(decoded_sequence,'s2t').replace("雞仔","我").replace("主人","哈囉").replace("主子哦","").replace("主子","哈囉")
         self.answerdb[user_id] = decoded_sequence
         return decoded_sequence
