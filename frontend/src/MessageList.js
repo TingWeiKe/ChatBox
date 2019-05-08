@@ -33,7 +33,7 @@ export default function MessageList(props){
 					)
 				})
 			) : null}
-			<RobotTypingItem type={'typing'} icon={robotState.icon} />
+			<RobotTypingItem type={'typing'} mode={robotState.mode} icon={robotState.icon} />
 		</div>
 	)
 }

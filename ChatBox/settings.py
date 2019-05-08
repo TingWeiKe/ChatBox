@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nz^!05c&x+bj4n(+pizgj!xoo@y(*bl3zg58407-k=mo&@4m!z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'chatbox.cc',
@@ -137,3 +137,5 @@ CORS_ORIGIN_WHITELIST = (
     'tingweike.github.io',
     '172.20.10.12'
 )
+
+ATA_UPLOAD_MAX_NUMBER_FIELDS = 202400

@@ -131,10 +131,8 @@ body {
 		}
 		> .robot_box {
 			display: block;
-			float: left;
-			margin-top: auto;
-			margin-bottom: auto;
-			margin-left: 15px;
+			position: relative;
+			left: 15px;
 			> div {
 				font-size: 18px;
 				color: white;

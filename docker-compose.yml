@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
   
-  # Dejango
+  # Django
   web:
     build: .
     command: ["./run_web.sh"]
