@@ -394,3 +394,38 @@ div#wave {
 		background-color: rgb(141, 137, 145);
 	}
 }
+
+.clickable {
+	cursor: pointer;
+}
+
+.robot_dropdown {
+	padding: 10px 15px;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: white;
+	border-radius: 15px;
+	z-index: 1 !important;
+	position: absolute;
+	left: 20px;
+	top: 27px;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+}
+
+.user_dropdown {
+	float: right;
+	padding: 10px 15px;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: white;
+	border-radius: 15px;
+	z-index: 1 !important;
+	position: relative;
+	left: 75px;
+	top: 26px;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+}

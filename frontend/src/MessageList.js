@@ -7,8 +7,9 @@ import AlertMessage from './AlertMessage'
 export default function MessageList(props){
 	const [ robotState ] = useContext(MessageManger)[2]
 	const [ messageState ] = useContext(MessageManger)[3]
+	
 	let message = []
-	let x = [ messageState.mixMessage, messageState.enMessage, messageState.cnMessage, messageState.stMessage ]
+	let x = [ messageState.mixMessage, messageState.enMessage, messageState.cnMessage, messageState.stofMessage ]
 	message = x[robotState.index]
 
 	function scrollToBottom(){
@@ -25,10 +26,10 @@ export default function MessageList(props){
 		<div onLoad={() => scrollToBottom()} id='message-list'>
 			<AlertMessage isAlert={props.isAlert} />
 			{message ? (
-				message.map((data) => {
+				message.map((data,index) => {
 					return (
 						<div key={data.id}>
-							<MessageItem type={data.type} data={data.text} time={data.time} icon={robotState.icon} />
+							<MessageItem type={data.type} data={data.text} time={data.time} icon={robotState.icon} index={index} />
 						</div>
 					)
 				})
