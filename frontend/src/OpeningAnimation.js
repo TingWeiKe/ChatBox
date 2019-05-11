@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Transition, Button } from 'semantic-ui-react'
+import { Image, Transition } from 'semantic-ui-react'
 import chickBot from './styles/chickbot.png'
 
 export default function OpeningAnimation(props){
@@ -14,7 +14,18 @@ export default function OpeningAnimation(props){
   function handleButtonClick() {
     setIsComplete(false)
     setButtonClciked(true)
-  }
+	}
+	
+	function startBtnAnimation() {
+		setTimeout(() => {
+			let mainBtnClass = document.getElementById('main_button').classList
+			mainBtnClass.remove('transition')
+			mainBtnClass.add('btn_animation')
+		}, 100);
+	
+		console.log(document.getElementById('main_button').classList)
+
+	}
 
 	return (
 		<div id='opening'>
@@ -24,8 +35,8 @@ export default function OpeningAnimation(props){
 					<h1>ChatBox</h1>
 				</div>
 			</Transition>
-			<Transition visible={IsComplete && !buttonClciked} animation='slide up' duration={600}>
-				<div id='main_button' onClick={handleButtonClick}>
+			<Transition onComplete={startBtnAnimation} visible={IsComplete && !buttonClciked} duration={600}>
+				<div  id='main_button' onClick={handleButtonClick}>
 					Start Chat
 				</div>
 			</Transition>

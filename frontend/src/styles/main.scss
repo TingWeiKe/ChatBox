@@ -7,7 +7,7 @@ body {
 	height: 100%;
 	background-image: linear-gradient(to right, #86ede7, #989af5, #c490f3) !important;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-	padding: 1.5% 1.5% !important;
+	padding: 3% 3% !important;
 }
 
 @media all and (max-width: 1199px) {
@@ -19,6 +19,10 @@ body {
 	}
 	.info_box {
 		height: 100% !important;
+		float: left;
+	}
+	#info_msg{
+		float: left;
 	}
 }
 
@@ -31,6 +35,9 @@ body {
 	}
 	.info_box {
 		height: 100% !important;
+	}
+	#info_msg{
+		float: left;
 	}
 }
 
@@ -71,7 +78,7 @@ body {
 
 .message-container {
 	position: relative;
-	height: 94vh;
+	height: 89vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	overflow: hidden;
@@ -88,7 +95,7 @@ body {
 
 .sidelist {
 	flex: 1 1 auto;
-	height: 90vh;
+	height: 89vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	overflow-y: scroll;
@@ -239,7 +246,7 @@ body {
 	}
 	> .msg_time {
 		max-width: 150px;
-		left: 40px;
+		left: 48px;
 		position: relative;
 		color: rgba(255, 255, 255, 0.5);
 		font-size: 10px;
@@ -270,7 +277,7 @@ body {
 		clear: both;
 		float: right;
 		max-width: 150px;
-		right: 45px;
+		right: 52px;
 		position: relative;
 		color: rgba(255, 255, 255, 0.5);
 		font-size: 10px;
@@ -365,14 +372,33 @@ body {
 }
 
 .info_box {
+	overflow: scoll;
 	flex: 1 1 auto;
-	height: 94vh;
+	height: 89vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	font-size: 16px;
 	padding: 16px;
 	color: white;
 	line-height: 1.4285em;
+	#info_msg{
+		width:100px;
+		position: relative;
+		display: inline;
+	}
+	
+	h1{
+		display: inline;
+		position: relative;
+		top:20px;
+		left: 10px;
+		margin: 0;
+		font-size: 38px;
+		color: white;
+		font-weight: bold;
+		line-height: 70px;
+		text-shadow: 3px 2px black;
+	}
 }
 
 div#wave {
@@ -401,6 +427,12 @@ div#wave {
 	40% {
 		transform: translateY(-4px);
 		background-color: rgb(141, 137, 145);
+	}
+}
+
+@keyframes wave2 {
+	40% {
+		transform: translateY(-6px);
 	}
 }
 
@@ -483,6 +515,11 @@ div#wave {
 		&:active{
 			transform: translate(0px, 2px);
 		}
+		
 	}
+}
+
+.btn_animation{
+	animation: wave2 0.5s linear infinite;
 }
 
