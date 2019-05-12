@@ -12,7 +12,7 @@ export default function Message(){
 	const icon = state.hasOwnProperty('icon') ? state.icon : headRobotIcon
 	
 	return (
-		<div style={iOS?{maxHeight:'86vh'}:null}  className='message-container'>
+		<div style={iOS?{maxHeight:'84vh'}:null}  className='message-container'>
 			<MessageHead state={{ ...state, icon }} />
 			<MessageList mode={state.mode} isAlert={isAlert} />
 			<UserInput mode={state.mode} icon={icon} isAlert={isAlert} setAlert={setAlert} />
