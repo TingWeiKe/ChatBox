@@ -44,7 +44,7 @@ export default function RobotList(){
 						🤖🤖
 					</span>{' '}
 				</div>
-				<div id='sub_header'>Chatting with a Deep learning brain</div>
+				<div id='sub_header'>Chatting with a Deep learning brains</div>
 			</div>
 			{robots ? (
 				robots.map((data) => {

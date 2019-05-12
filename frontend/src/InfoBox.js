@@ -7,19 +7,43 @@ export default function InfoBox(){
 	return (
 		<Grid.Column tablet={16} widescreen={4} largeScreen={4}>
 			<div className='info_box'>
-				<div style={{margin:'auto'}}>
+				<div style={{ margin: 'auto' }}>
 					<Image id='info_msg' src={chickBot} />
 					<h1>ChatBox</h1>
 				</div>
 				<Divider />
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				<div className='github_box'>
-					<Header as='h3'>
-						<Image src={gitIcon} />
-						<Header.Content>FullStack
-						<Header.Subheader>See the github</Header.Subheader>
-						</Header.Content>
-					</Header>
+				<div>
+				Chatting with a Deep learning brains.<br/>
+				A fancy chatroom for you to chat with a functional DL robot.
+				</div>
+
+			
+				<div>
+					<div className='git'>
+						<Divider />
+						<a href='https://github.com/TIngWeiKe/ChatBox' target='_blank' rel='noopener noreferrer'>
+							<div className='github_box clickable'>
+								<Header as='h3'>
+									<Image src={gitIcon} />
+									<Header.Content>
+										FullStack
+										<Header.Subheader>See Github</Header.Subheader>
+									</Header.Content>
+								</Header>
+							</div>
+						</a>
+						<a href='https://github.com/waynewu6250/StackBoxer' target='_blank' rel='noopener noreferrer'>
+							<div className='github_box clickable'>
+								<Header as='h3'>
+									<Image src={gitIcon} />
+									<Header.Content>
+										DL Models
+										<Header.Subheader>See Github</Header.Subheader>
+									</Header.Content>
+								</Header>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</Grid.Column>

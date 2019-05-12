@@ -5,9 +5,9 @@ html{
 body {
 	width: 100%;
 	height: 100%;
-	background-image: linear-gradient(to right, #86ede7, #989af5, #c490f3) !important;
+	background-image: linear-gradient(to right, #97eacf, #989af5, #e890f3) !important;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-	padding: 3% 3% !important;
+	padding: 3% 5% !important;
 }
 
 @media all and (max-width: 1199px) {
@@ -55,6 +55,9 @@ body {
 	.message-container {
 		height: 96vh !important;
 	}
+	.git{
+		position: unset !important; 
+	}
 }
 
 @media all and (max-width: 468px) {
@@ -74,11 +77,14 @@ body {
 		font-size: 7.5vw !important;
 		padding: 15px 30px !important;
 	}
+	.git{
+		position: unset !important; 
+	}
 }
 
 .message-container {
 	position: relative;
-	height: 89vh;
+	height: 90vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	overflow: hidden;
@@ -88,6 +94,7 @@ body {
 #message-list {
 	height: calc(100% - 140px);
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	padding: 0.8em 1.5em;
 }
 
@@ -95,11 +102,11 @@ body {
 
 .sidelist {
 	flex: 1 1 auto;
-	height: 89vh;
+	height: 90vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	overflow-y: scroll;
-
+	-webkit-overflow-scrolling: touch;
 	.side_header {
 		color: white;
 		text-align: center;
@@ -290,6 +297,7 @@ body {
 	height: 80px;
 	margin-bottom: 0;
 	background-color: rgba(0, 0, 0, .1);
+	
 	> .robot_info {
 		position: relative;
 	}
@@ -372,15 +380,17 @@ body {
 }
 
 .info_box {
-	overflow: scoll;
-	flex: 1 1 auto;
-	height: 89vh;
+	position: relative;
+	overflow: scroll ;
+	-webkit-overflow-scrolling: touch;
+	height: 90vh;
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	border-radius: 15px !important;
 	font-size: 16px;
 	padding: 16px;
 	color: white;
 	line-height: 1.4285em;
+	
 	#info_msg{
 		width:100px;
 		position: relative;
@@ -399,6 +409,10 @@ body {
 		line-height: 70px;
 		text-shadow: 3px 2px black;
 	}
+}
+
+.info_box::-webkit-scrollbar {
+	display: none;
 }
 
 div#wave {
@@ -523,3 +537,24 @@ div#wave {
 	animation: wave2 0.5s linear infinite;
 }
 
+.github_box{
+	margin: 10px 0;
+	.content{
+		color: white;
+	}
+	.sub{
+		color: rgba(255, 255, 255, 0.5) !important;
+	}
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+		border-radius: 15px !important;
+	}
+}
+
+.git{
+	position: absolute;
+	width: 92%;
+	padding: 5px;
+	float: left;
+	bottom: 0px;
+}

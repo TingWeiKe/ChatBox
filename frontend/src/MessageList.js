@@ -28,9 +28,7 @@ export default function MessageList(props){
 			{message ? (
 				message.map((data,index) => {
 					return (
-						<div key={data.id}>
-							<MessageItem type={data.type} data={data.text} time={data.time} icon={robotState.icon} index={index} />
-						</div>
+							<MessageItem key={data.id} type={data.type} data={data.text} time={data.time} icon={robotState.icon} index={index} />
 					)
 				})
 			) : null}

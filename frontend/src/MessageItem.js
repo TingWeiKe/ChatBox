@@ -32,7 +32,7 @@ function MessageRobotItem(props){
 	})
 
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={400}>
+		<Transition key={props.key} transitionOnMount={true} animation='scale' duration={400}>
 			<div className='robot-message'>
 				<div ref={ref} className='msg_icon'>
 					<Image className='circle clickable' src={props.icon} onClick={() => props.setToggle(!props.toggle)} />
@@ -76,7 +76,7 @@ function MessageUserItem(props){
 	})
 
 	return (
-		<Transition transitionOnMount={true} animation='scale' duration={400}>
+		<Transition key={props.key} transitionOnMount={true} animation='scale' duration={400}>
 			<div className='user-message'>
 				<div ref={ref}  className='msg_icon'>
 					<Image className='circle clickable' src={userIcon} onClick={() => props.setToggle(!props.toggle)} />

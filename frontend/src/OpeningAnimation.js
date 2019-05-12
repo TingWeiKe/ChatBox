@@ -22,8 +22,6 @@ export default function OpeningAnimation(props){
 			mainBtnClass.remove('transition')
 			mainBtnClass.add('btn_animation')
 		}, 100);
-	
-		console.log(document.getElementById('main_button').classList)
 
 	}
 
