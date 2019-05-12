@@ -2,7 +2,7 @@
 
 A fancy chatroom for you to chat with three different Deep learning robots. 🤖🤖
 
-**Link: http://chatbox.cc/**
+**Link: https://chatbox.cc/**
 
 This work basically combines three separate work with full credits given to: <br> 
 [Ting-Wei Ke](https://github.com/TIngWeiKe) and [Wayne Wu](https://github.com/waynewu6250): <br>
