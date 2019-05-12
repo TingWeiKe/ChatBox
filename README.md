@@ -45,10 +45,13 @@ https://www.dropbox.com/sh/6it184fgyln7jv2/AACC2Gy1Oct7SX7BvayypZACa?dl=0
 >
     dialogue/
     └── moviebot_data/
+        ├── chinese_data.bin
         ├── data.bin
+        ├── memory_chinese.pth
         ├── memory.pth
         ├── movie_conversations.txt
         ├── movie_lines.tsv
+        ├── new_data.conv
     
     └── stackbot_data/
         └── thread_embeddings_by_tags/

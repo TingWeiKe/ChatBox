@@ -1,38 +1,38 @@
 import React from 'react'
 import axios from 'axios'
 import { Image } from 'semantic-ui-react'
-let typingTimeout
 
-axios.interceptors.request.use(
-	(request) => {
-		typingTimeout = setTimeout(() => {
-			document.getElementById('typing').style.display = 'unset'
-			document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
-		}, 1500)
+(function(){
+	let typingTimeout;
+	axios.interceptors.request.use(
+		(request) => {
+			typingTimeout = setTimeout(() => {
+				document.getElementById('typing').style.display = 'unset'
+				document.getElementById('message-list').scrollTop = document.getElementById('message-list').scrollHeight
+			}, 1500)
+	
+			return request
+		},
+		(error) => {
+			clearTimeout(typingTimeout)
+			document.getElementById('typing').style.display = 'none'
+			return Promise.reject(error)
+		}
+	)
+	axios.interceptors.response.use(
+		(response) => {
+			clearTimeout(typingTimeout)
+			document.getElementById('typing').style.display = 'none'
+			return response
+		},
+		(error) => {
+			clearTimeout(typingTimeout)
+			document.getElementById('typing').style.display = 'none'
+			return Promise.reject(error)
+		}
+	)
+} )()
 
-		return request
-	},
-	(error) => {
-		clearTimeout(typingTimeout)
-		document.getElementById('typing').style.display = 'none'
-
-		return Promise.reject(error)
-	}
-)
-axios.interceptors.response.use(
-	(response) => {
-		clearTimeout(typingTimeout)
-		document.getElementById('typing').style.display = 'none'
-
-		return response
-	},
-	(error) => {
-		clearTimeout(typingTimeout)
-		document.getElementById('typing').style.display = 'none'
-
-		return Promise.reject(error)
-	}
-)
 
 export default function RobotTypingItem(props){
 	return (

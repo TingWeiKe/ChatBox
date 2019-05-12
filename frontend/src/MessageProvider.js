@@ -14,7 +14,7 @@ export default function MessageProvider({ children }){
 		index: 0,
 	}
 
-	let initMessageState = { mixMessage: [], enMessage: [], cnMessage: [], stMessage: [] }
+	let initMessageState = { mixMessage: [], enMessage: [], cnMessage: [], stofMessage: [] }
 	if (typeof localStorage !== 'undefined') {
 		if (!localStorage.message) {
 			localStorage.setItem('message', JSON.stringify(initMessageState))

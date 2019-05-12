@@ -13,6 +13,8 @@ else
     rm dialogue/stackbot_data/download2.zip
 fi
 
+wait
+
 # Docker compose
 docker-compose up -d
 

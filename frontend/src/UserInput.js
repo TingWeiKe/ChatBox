@@ -8,6 +8,7 @@ import send from './sound/send.mp3'
 import receive from './sound/receive.mp3'
 const sendSound = new Audio(send)
 const receiveSound = new Audio(receive)
+export 	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
 
 export default function UserInput(props){
 	const [ input, setInput ] = useContext(MessageManger)
@@ -15,7 +16,6 @@ export default function UserInput(props){
 	const [ text, setText ] = useState('')
 	const counter = React.useRef(0)
 	const dispatch = useContext(MessageManger)[3][1]
-	const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
 
 	function generateRandId(){
 		return Math.random().toString(36).replace(/[^a-z]+/g, '')
@@ -92,14 +92,14 @@ export default function UserInput(props){
 		// Input is not Empty
 		if (text && isReturned === true) {
 			setReturn(false)
+			sendSound.play()
 			document.getElementById('textarea').value = ''
 			let inputMessage = {
 				text: text,
 				type: 'user',
-				time: new Date().toLocaleString(),
+				time: new Date().toLocaleTimeString(),
 				id: generateRandId(),
 			}
-			sendSound.play()
 			setInput([ ...input, inputMessage ])
 			dispatch({
 				type: props.mode,
@@ -113,7 +113,7 @@ export default function UserInput(props){
 						let outputMessage = {
 							text: res.data.result,
 							type: 'robot',
-							time: new Date().toLocaleString(),
+							time: new Date().toLocaleTimeString(),
 							id: res.data.id,
 						}
 						dispatch({

@@ -115,5 +115,12 @@ dialogue/stackbot_data/
 # vscode
 .vscode/
 
+<<<<<<< HEAD
 _DS_Store
 .DS_Store
+=======
+# logo
+*.pptx
+*.ai
+test.js
+>>>>>>> 1231c972fa47984938c80ec2e22ea9bee1b8e277

@@ -12,11 +12,18 @@ from .utils import *
 
 bot = StackBoxer(RESOURCE_PATH)
 
+def job(text, mode, user_id):
+    return bot.generate_answer(text, mode, user_id)
+
+
 @api_view(['POST'])
 def DialogueViewSet(request):
     serializer = DialogueSerializer(data=request.data)
     if serializer.is_valid():
-        result = bot.generate_answer(convert(request.data["text"], 't2s'), request.data["mode"],request.data["user_id"])
+        text = convert(request.data["text"], 't2s')
+        mode = request.data["mode"]
+        user_id = request.data["user_id"]
+        result = job(text, mode, user_id)
         serializer.save(result=result)
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

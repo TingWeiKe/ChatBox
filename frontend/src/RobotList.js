@@ -6,20 +6,20 @@ export default function RobotList(){
 	const initialState = [
 		{
 			title: 'MixRobot',
-			info: '( EnglishBot + StackBot )',
+			info: '( MovieBot + ChickBot + StackBot )',
 			action: 'TO_MIX',
 			mode: 'mix',
 			icon: mixRobotIcon,
 		},
 		{
-			title: 'English Chatbot',
+			title: 'MovieBot',
 			info: '( English Chatbot )',
 			action: 'TO_EN',
 			mode: 'en',
 			icon: headRobotIcon,
 		},
 		{
-			title: '中文聊天機器人',
+			title: '雞寶 ( ChickBot )',
 			info: '( Chinese Chatbot )',
 			action: 'TO_CN',
 			mode: 'en',
@@ -44,7 +44,7 @@ export default function RobotList(){
 						🤖🤖
 					</span>{' '}
 				</div>
-				<div id='sub_header'>Chatting with a Deep learning brain</div>
+				<div id='sub_header'>Chatting with a Deep learning brains</div>
 			</div>
 			{robots ? (
 				robots.map((data) => {
