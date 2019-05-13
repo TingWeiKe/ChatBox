@@ -13,7 +13,7 @@ This work basically combines three separate work with full credits given to: <br
 * [ChatBox](https://github.com/TIngWeiKe/ChatBox): A web full-stack application of fancy chatroom designed and created by [Ting-Wei Ke](https://github.com/TIngWeiKe).
 
 ## Installation
-*If you want to run ChatBox locally with Docker. Please see [StackBot](https://github.com/waynewu6250/ML_DL_Projects/tree/master/1.StackBot-on-telegram**
+*If you want to run ChatBox locally with Docker. Please see [StackBot](https://github.com/waynewu6250/ML_DL_Projects/tree/master/1.StackBot-on-telegram) to have full docker installation.
 
 
 ## Include
