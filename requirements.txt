@@ -10,7 +10,7 @@ get==2019.3.22
 idna==2.8
 mathparse==0.1.2
 nltk==3.4.5
-numpy==1.16.2
+numpy==1.22.0
 oauthlib==3.0.1
 opencc-python-reimplemented==0.1.4
 post==2019.3.22
